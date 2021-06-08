@@ -3,9 +3,9 @@ name: Building GSI..
 on: [push]
 
 env:
-  ROM_URL: http://boxmirrorbomt.boxmirrorbomt1.workers.dev/0:/dotOS-R-v5.1-merlin-UNOFFICIAL-20210530-1248.zip 
-  ROM_NAME: Generic:DotOS-5.1-TM
-  ZIP_NAME: DotOs-5.1-TM-AB-11-20210607-RK137GSI.zip
+  ROM_URL: https://mirror.rahul137.workers.dev/dotOS-R-v5.1-RMX2151-UNOFFICIAL-20210531-0954.zip 
+  ROM_NAME: Generic:DotOS-5.1-T7l
+  ZIP_NAME: DotOs-5.1-T7l-AB-11-20210608-RK137GSI.zip
   TZ: Asia/Kolkata
 jobs:
   build:
