@@ -3,9 +3,9 @@ name: Building GSI..
 on: [push]
 
 env:
-  ROM_URL: https://mirror.rahul137.workers.dev/dotOS-R-v5.1-RMX2151-UNOFFICIAL-20210531-0954.zip 
-  ROM_NAME: Generic:DotOS-5.1-T7l
-  ZIP_NAME: DotOs-5.1-T7l-AB-11-20210608-RK137GSI.zip
+  ROM_URL: https://dl.google.com/developers/android/sc/images/factory/blueline-spb2.210513.007-factory-6c2e7c7f.zip 
+  ROM_NAME: Generic:Pixel-3-b2
+  ZIP_NAME: Pixel-3-b2e-AB-S-202106010-RK137GSI.zip
   TZ: Asia/Kolkata
 jobs:
   build:
