@@ -3,9 +3,9 @@ name: Building GSI..
 on: [push]
 
 env:
-  ROM_URL: https://mirror.rahul137.workers.dev/blueline-spb2.210513.007-factory-6c2e7c7f/blueline-spb2.210513.007/image-blueline-spb2.210513.007.zip 
-  ROM_NAME: Generic:Pixel-3-b2
-  ZIP_NAME: Pixel-3-b2e-AB-S-202106010-RK137GSI.zip
+  ROM_URL: https://mirror.rahul137.workers.dev/Floko-v4.0-RMX2020-20210508-UNOFFICIAL.zip 
+  ROM_NAME: Generic:Floko-tl
+  ZIP_NAME: Floko-tl-RK137GSI.zip
   TZ: Asia/Kolkata
 jobs:
   build:
