@@ -38,6 +38,7 @@ jobs:
          run: |
               sudo chmod -R 777 ErfanGSIs
               cd ErfanGSIs
+              git clone https://github.com/rahulkhatri137/treble_experimentations treble
               sudo bash setup.sh
        
        - name: Download Rom & Generate GSI
