@@ -27,19 +27,22 @@ jobs:
             sudo -E apt-get -qq update
             sudo -E apt-get -qq install git openjdk-8-jdk wget expect
        
-       - name: Clone ErfanGSIs
-         run: git clone --recurse-submodules https://github.com/Rahul-o/ErfanGSIs -b old
+       - name: Clone
+         run: |
+            git clone https://github.com/rahulkhatri137/treble_experimentations treble
+            cd treble ; mkdir -p framework ; cd framework
+            wget https://mirror.rahul137.workers.dev/framework-res.apk
        
-       
-       - name: Download Rom & Generate GSI
-         run: sudo ./ErfanGSIs/url2GSI.sh $ROM_URL $ROM_NAME
+       - name: Framework
+         run: |
+            cd treble ; cd overlay
+            bash generate.sh
+            ls
        
        - name: Zip AB and upload 
          run: |
-              mkdir final
-              sudo chmod -R 777 ErfanGSIs/output
-              cd ErfanGSIs/output
-              zip -r $ZIP_NAME *-AB-*.img
+              cd ./treble/framework
+              ls
               expect -c " 
               spawn sftp ${{ secrets.SFUSER }}@frs.sourceforge.net
               expect \"yes/no\"
@@ -49,7 +52,7 @@ jobs:
               expect \"sftp> \"
               send \"cd ${{ secrets.SFDIR }}\r\"
               set timeout -1
-              send \"put $ZIP_NAME\r\"
+              send \"put n\r\"
               expect \"Uploading\"
               expect \"100%\"
               expect \"sftp>\"
