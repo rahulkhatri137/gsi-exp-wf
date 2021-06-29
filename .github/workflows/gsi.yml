@@ -3,9 +3,9 @@ name: Building GSI..
 on: [push]
 
 env:
-  ROM_URL: https://mirror.rahul137.workers.dev/Floko-v4.0-RMX2020-20210508-UNOFFICIAL.zip 
-  ROM_NAME: Generic:Floko-tl
-  ZIP_NAME: Floko-tl-RK137GSI.zip
+  ROM_URL: https://cloud.minati.workers.dev/dotOS-R-v5.1-RMX1941-UNOFFICIAL-20210529-2316.zip 
+  ROM_NAME: Generic:Dot-old
+  ZIP_NAME: Dot-old-RK137GSI.zip
   TZ: Asia/Kolkata
 jobs:
   build:
@@ -32,7 +32,7 @@ jobs:
 
        
        - name: Clone ErfanGSIs
-         run: git clone --recurse-submodules https://github.com/rahulkhatri137/ErfanGSIs
+         run: git clone --recurse-submodules https://github.com/Rahul-o/ErfanGSIs -b old
        
        - name: Setting up ErfanGSI requirements
          run: |
