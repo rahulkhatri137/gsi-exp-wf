@@ -18,7 +18,7 @@ jobs:
        - name: Initializing environment
          run: |
             sudo -E apt-get -qq update
-            sudo -E apt-get -qq install git openjdk-8-jdk aria2 expect xmlstarlet
+            sudo -E apt-get -qq install git openjdk-8-jdk aria2 expect xmlstarlet make
        
        - name: Clone
          run: |
@@ -36,6 +36,7 @@ jobs:
        - name: Zip AB and upload 
          run: |
               cd ./treble/rro ; ls
+              make -f Android.mk ; ls
               cd zip
               expect -c " 
               spawn sftp ${{ secrets.SFUSER }}@frs.sourceforge.net
