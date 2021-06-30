@@ -28,7 +28,7 @@ jobs:
        - name: Framework
          run: |
             cd treble
-            bash ./build/build.sh treble-overlay-realme-1
+            bash ./build/build.sh overlay/Realme/1
             ls
        
        - name: Zip AB and upload 
