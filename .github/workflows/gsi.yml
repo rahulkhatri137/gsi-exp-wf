@@ -30,13 +30,13 @@ jobs:
        - name: Clone
          run: |
             git clone https://github.com/rahulkhatri137/treble_experimentations treble
-            cd treble ; mkdir -p framework ; cd framework
+            cd treble ; mkdir -p system ; cd system ; mkdir -p framework ; cd framework
             wget https://mirror.rahul137.workers.dev/framework-res.apk
        
        - name: Framework
          run: |
             cd treble ; cd overlay
-            bash generate.sh framework frm
+            bash generate.sh system frm
             ls
        
        - name: Zip AB and upload 
