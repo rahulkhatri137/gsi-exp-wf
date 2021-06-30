@@ -22,20 +22,18 @@ jobs:
        
        - name: Clone
          run: |
-            git clone https://github.com/rahulkhatri137/treble_experimentations treble
-            mv frm ./treble ; cd treble ; ls ; mkdir -p system ; cd system ; mkdir -p framework ; cd framework
-            aria2c https://mirror.rahul137.workers.dev/framework-res.apk
+            git clone https://github.com/rahulkhatri137/vendor_hardware_overlay treble
+            cd treble ; ls
        
        - name: Framework
          run: |
             cd treble
-            aria2c https://bitbucket.org/iBotPeaches/apktool/downloads/apktool_2.5.0.jar ; ls
-            bash ./overlay/generate.sh system frm
-            ls ; cd system ; cd framework ; ls
+            bash ./tests/tests.sh
+            ls
        
        - name: Zip AB and upload 
          run: |
-              cd ./treble/rro ; ls
+              cd zip ; ls
               make Android.mk ; ls
               zip -r $ZIP_NAME *
               expect -c " 
