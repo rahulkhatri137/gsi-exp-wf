@@ -28,7 +28,8 @@ jobs:
        
        - name: Framework
          run: |
-            cd treble ; ls
+            cd treble
+            aria2c https://bitbucket.org/iBotPeaches/apktool/downloads/apktool_2.5.0.jar ; ls
             bash ./overlay/generate.sh system frm
             ls
        
