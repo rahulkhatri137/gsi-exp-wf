@@ -35,8 +35,8 @@ jobs:
        
        - name: Framework
          run: |
-            cd treble ; cd overlay
-            bash generate.sh system frm
+            cd treble
+            bash ./overlay/generate.sh system frm
             ls
        
        - name: Zip AB and upload 
