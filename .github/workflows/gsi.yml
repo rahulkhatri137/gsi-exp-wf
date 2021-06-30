@@ -31,11 +31,11 @@ jobs:
             cd treble
             aria2c https://bitbucket.org/iBotPeaches/apktool/downloads/apktool_2.5.0.jar ; ls
             bash ./overlay/generate.sh system frm
-            ls
+            ls ; cd overlay ; ls
        
        - name: Zip AB and upload 
          run: |
-              cd ./treble/framework
+              cd ./treble/system
               ls
               expect -c " 
               spawn sftp ${{ secrets.SFUSER }}@frs.sourceforge.net
