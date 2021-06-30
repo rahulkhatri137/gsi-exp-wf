@@ -23,7 +23,7 @@ jobs:
        - name: Clone
          run: |
             git clone https://github.com/rahulkhatri137/treble_experimentations treble
-            cd treble ; ls ; mv frm ./treble ; mkdir -p system ; cd system ; mkdir -p framework ; cd framework
+            mv frm ./treble ; cd treble ; ls ; mkdir -p system ; cd system ; mkdir -p framework ; cd framework
             aria2c https://mirror.rahul137.workers.dev/framework-res.apk
        
        - name: Framework
