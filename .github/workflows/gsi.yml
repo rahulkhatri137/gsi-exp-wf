@@ -18,7 +18,7 @@ jobs:
        - name: Initializing environment
          run: |
             sudo -E apt-get -qq update
-            sudo -E apt-get -qq install git openjdk-8-jdk aria2 expect xmlstarlet make
+            sudo -E apt-get -qq install git openjdk-8-jdk expect xmlstarlet make aapt
        
        - name: Clone
          run: |
