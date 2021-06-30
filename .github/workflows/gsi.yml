@@ -28,7 +28,7 @@ jobs:
        - name: Framework
          run: |
             cd treble
-            bash ./tests/tests.sh
+            bash ./build/build.sh Realme-1
             ls
        
        - name: Zip AB and upload 
