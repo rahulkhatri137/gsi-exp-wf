@@ -5,7 +5,7 @@ on: [push]
 env:
   ROM_URL: https://cloud.minati.workers.dev/dotOS-R-v5.1-RMX1941-UNOFFICIAL-20210529-2316.zip 
   ROM_NAME: Generic:Dot-old
-  ZIP_NAME: Dot-old-RK137GSI.zip
+  ZIP_NAME: Ftest.zip
   TZ: Asia/Kolkata
 jobs:
   build:
@@ -37,7 +37,7 @@ jobs:
          run: |
               cd ./treble/rro ; ls
               make Android.mk ; ls
-              cd zip
+              zip -r $ZIP_NAME *
               expect -c " 
               spawn sftp ${{ secrets.SFUSER }}@frs.sourceforge.net
               expect \"yes/no\"
@@ -47,7 +47,7 @@ jobs:
               expect \"sftp> \"
               send \"cd ${{ secrets.SFDIR }}\r\"
               set timeout -1
-              send \"put n\r\"
+              send \"put *.zip\r\"
               expect \"Uploading\"
               expect \"100%\"
               expect \"sftp>\"
