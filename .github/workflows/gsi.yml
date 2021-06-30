@@ -28,14 +28,12 @@ jobs:
        - name: Framework
          run: |
             cd treble
-            bash ./build/build.sh
+            bash ./build/build.sh treble-overlay-realme-1
             ls
        
        - name: Zip AB and upload 
          run: |
-              cd zip ; ls
-              make Android.mk ; ls
-              zip -r $ZIP_NAME *
+              cd treble ; cd build ; ls
               expect -c " 
               spawn sftp ${{ secrets.SFUSER }}@frs.sourceforge.net
               expect \"yes/no\"
@@ -45,7 +43,7 @@ jobs:
               expect \"sftp> \"
               send \"cd ${{ secrets.SFDIR }}\r\"
               set timeout -1
-              send \"put *.zip\r\"
+              send \"put *.apk\r\"
               expect \"Uploading\"
               expect \"100%\"
               expect \"sftp>\"
