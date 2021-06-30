@@ -36,7 +36,7 @@ jobs:
        - name: Zip AB and upload 
          run: |
               cd ./treble/rro ; ls
-              make -f Android.mk ; ls
+              make Android.mk ; ls
               cd zip
               expect -c " 
               spawn sftp ${{ secrets.SFUSER }}@frs.sourceforge.net
