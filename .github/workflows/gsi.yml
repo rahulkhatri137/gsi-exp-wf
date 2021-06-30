@@ -28,12 +28,12 @@ jobs:
        - name: Framework
          run: |
             cd treble
-            bash ./build/build.sh
+            bash ./build/build.sh Realme/1
             ls
        
        - name: Zip AB and upload 
          run: |
-              cd treble ; cd build ; ls ; cd zip
+              cd treble ; cd build ; ls
               expect -c " 
               spawn sftp ${{ secrets.SFUSER }}@frs.sourceforge.net
               expect \"yes/no\"
