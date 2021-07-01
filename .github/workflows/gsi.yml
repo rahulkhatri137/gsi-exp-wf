@@ -42,12 +42,12 @@ jobs:
          run: |
             cd framework/framework-res ; ls ; cd .. ; rm -rf framework-res.apk
             java -jar apktool_2.5.0.jar b -f framework-res
-            ls ; cd framework-res ; ls ; cd build ; ls
+            ls ; cd framework-res ; ls ; cd build ; ls ; cd apk ; ls
             cd ../dist ; ls
 
        - name: Upload
          run: |
-            cd ./framework/dist ; ls 
+            cd ./framework/framework-res/dist ; ls 
             expect -c " 
             spawn sftp ${{ secrets.SFUSER }}@frs.sourceforge.net
             expect \"yes/no\"
