@@ -32,20 +32,10 @@ jobs:
             bash ./overlay/generate.sh system frm
             ls 
 
-       - name: Setup apktool
-         run: |
-            mv apktool.bat ./treble/system/framework ; cd treble
-            cd system ; cd framework ; ls
-            mkdir -p .bin
-            aria2c https://bitbucket.org/iBotPeaches/apktool/downloads/apktool_2.5.0.jar ; ls
-            mv apktool_2.5.0.jar apktool.jar
-            mv apktool.bat ./.bin ; mv apktool.jar ./.bin
-            cd ./.bin ; chmod +x apktool.bat ; chmod +x apktool.jar
-
        - name: Extract Framework
          run: |
             cd ./treble/system/framework
-            ./.bin/apktool framework-res.apk
+            java -jar ../treble/apktool_2.5.0.jar d -f framework-res.apk
             ls ; cd framework-res ; ls
             
        - name: Update values
