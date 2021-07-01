@@ -4,7 +4,7 @@ on: [push]
 
 env:
   URL: https://mirror.rahul137.workers.dev/framework-res.apk
-  ZIP : Dot-F.zip
+  ZIP : Fluid-F.zip
   TZ: Asia/Kolkata
 jobs:
   build:
