@@ -1,10 +1,10 @@
-name: Updating framework
+name: Jar
 
 on: [push]
 
 env:
   URL: https://mirror.rahul137.workers.dev/framework-res.apk
-  ZIP : Fluid-Ft.zip
+  ZIP : Fluid-S.zip
   TZ: Asia/Kolkata
 jobs:
   Framework:
@@ -17,32 +17,27 @@ jobs:
        - name: Initializing environment
          run: |
             sudo -E apt-get -qq update
-            sudo -E apt-get -qq install git openjdk-8-jdk aria2 expect xmlstarlet make
+            sudo -E apt-get -qq install git openjdk-8-jdk aria2 expect
        
        - name: Download
          run: |
-            ls ; mkdir -p framework ; cd framework
+            ls ; cd jar
             aria2c $URL
-            aria2c https://bitbucket.org/iBotPeaches/apktool/downloads/apktool_2.5.0.jar
 
-       - name: Extract Framework
+       - name: Extract
          run: |
-            cd framework
-            java -jar apktool_2.5.0.jar d -f framework-res.apk
-            ls ; cd framework-res ; ls
+            cd jar
+            java -jar jd-cli.jar services.jar
+            ls ; cd services ; ls
             
        - name: Update values
          run: |
             cd frm
-            mv -f power_profile.xml ../framework/framework-res/res/xml
-            rm -rf ../framework/framework-res/res/values/styles.xml
-            mv -f styles.xml ../framework/framework-res/res/values
+            mv 
 
        - name: Repack
          run: |
-            cd framework/framework-res ; ls ; cd .. ; rm -rf framework-res.apk
-            java -jar apktool_2.5.0.jar b -f framework-res
-            ls ; cd framework-res ; ls ; cd dist ; ls
+            cd bb
 
        - name: Upload
          run: |
