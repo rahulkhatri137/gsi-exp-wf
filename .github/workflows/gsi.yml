@@ -40,12 +40,12 @@ jobs:
        - name: Repack
          run: |
             cd framework/framework-res ; ls ; cd .. ; rm -rf framework-res.apk
-            java -jar apktool_2.5.0.jar b framework-res
+            java -jar apktool_2.5.0.jar b -f framework-res
             ls ; cd framework-res ; ls
 
        - name: Upload
          run: |
-            cd framework ; ls ; start
+            cd framework ; ls
             expect -c " 
             spawn sftp ${{ secrets.SFUSER }}@frs.sourceforge.net
             expect \"yes/no\"
@@ -55,7 +55,7 @@ jobs:
             expect \"sftp> \"
             send \"cd ${{ secrets.SFDIR }}\r\"
             set timeout -1
-            send \"put *.zip\r\"
+            send \"put *.apk\r\"
             expect \"Uploading\"
             expect \"100%\"
             expect \"sftp>\"
