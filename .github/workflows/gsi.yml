@@ -46,8 +46,9 @@ jobs:
        
        - name: Repack and upload 
          run: |
-              cd ./treble/system/framework/framework-res ; ls
-              zip -r $ZIP *
+              cd ./treble/system/framework/framework-res ; ls ; cd .. ; rm-rf framework framework-res.apk
+              java -jar ~/work/gsi-p-wf/gsi-p-wf/treble/apktool_2.5.0.jar -b framework-res
+              ls ; cd framework-res ; ls
               expect -c " 
               spawn sftp ${{ secrets.SFUSER }}@frs.sourceforge.net
               expect \"yes/no\"
