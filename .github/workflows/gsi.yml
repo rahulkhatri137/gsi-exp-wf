@@ -41,7 +41,7 @@ jobs:
        - name: Update values
          run: |
               cd ./treble/rro ; ls ; cd ./res/values ; ls
-              mv brightness.xml ~/treble/system/framework-res/values
+              mv brightness.xml ../treble/system/framework-res/values
        
        - name: Repack and upload 
          run: |
