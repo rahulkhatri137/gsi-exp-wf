@@ -22,7 +22,6 @@ jobs:
        - name: Download
          run: |
             ls ; cd jar
-            aria2c $URL
 
        - name: Extract
          run: |
