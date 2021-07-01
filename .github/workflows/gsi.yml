@@ -25,15 +25,23 @@ jobs:
             mv frm ./treble ; cd treble ; ls ; mkdir -p system ; cd system ; mkdir -p framework ; cd framework
             aria2c $URL
        
-       - name: Extract Framework
+       - name: Generate
          run: |
             cd treble
             aria2c https://bitbucket.org/iBotPeaches/apktool/downloads/apktool_2.5.0.jar ; ls
             bash ./overlay/generate.sh system frm
-            ls ; cd system ; cd framework ; ls
+            ls 
+
+       - name: Extract Framework
+         run: |
+            mv apktool.bat ./treble/system/framework ; cd treble
+            cd system ; cd framework ; ls
+            mkdir -p .bin
             aria2c https://bitbucket.org/iBotPeaches/apktool/downloads/apktool_2.5.0.jar ; ls
-            java -jar apktool_2.5.0.jar framework-res.apk
-            ls
+            mv apktool_2.5.0.jar apktool.jar
+            mv apktool.bat ./.bin ; mv apktool.jar ./.bin
+            apktool framework-res.apk
+            ls ; cd framework-res ; ls
             
        - name: Update values
          run: |
