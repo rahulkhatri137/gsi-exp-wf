@@ -35,7 +35,9 @@ jobs:
          run: |
             cd frm
             mv -f power_profile.xml ../framework/framework-res/res/xml
-       
+            rm -rf ../framework/framework-res/res/values/styles.xml
+            mv -f styles.xml ../framework/framework-res/res/values
+
        - name: Repack
          run: |
             cd framework/framework-res ; ls ; cd .. ; rm -rf framework-res.apk
