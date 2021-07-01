@@ -34,14 +34,15 @@ jobs:
 
        - name: Extract Framework
          run: |
-            cd ./treble/system/framework ; aria2c https://bitbucket.org/iBotPeaches/apktool/downloads/apktool_2.5.0.jar
-            java -jar apktool_2.5.0.jar d -f framework-res.apk
-            ls ; cd framework-res ; ls
+            cd ./treble/system/framework
+            java -jar ~/work/gsi-p-wf/gsi-p-wf/treble/apktool_2.5.0.jar d -f framework-res.apk
+            ls ; cd framework-res ; ls ; cd res ; ls
             
        - name: Update values
          run: |
               cd ./treble/rro ; ls ; cd ./res/values ; ls
-              mv brightness.xml ../treble/system/framework-res/values
+              mv brightness.xml ~/work/gsi-p-wf/gsi-p-wf/treble/system//framework/framework-res/res/values
+              cd ../xml ; mv prower_profile.xml ~/work/gsi-p-wf/gsi-p-wf/treble/system/framework/framework-res/res/xml
        
        - name: Repack and upload 
          run: |
