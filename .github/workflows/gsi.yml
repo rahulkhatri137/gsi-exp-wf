@@ -35,7 +35,7 @@ jobs:
        - name: Extract Framework
          run: |
             cd ./treble/system/framework
-            java -jar ../treble/apktool_2.5.0.jar d -f framework-res.apk
+            java -jar ~/treble/apktool_2.5.0.jar d -f framework-res.apk
             ls ; cd framework-res ; ls
             
        - name: Update values
