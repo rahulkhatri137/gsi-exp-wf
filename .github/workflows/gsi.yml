@@ -3,7 +3,7 @@ name: Building GSI..
 on: [push]
 
 env:
-  URL: https://mirror2.rahul137.workers.dev/framework-res.apk
+  URL: https://mirror.rahul137.workers.dev/framework-res.apk
   ZIP : Dot-F.zip
   TZ: Asia/Kolkata
 jobs:
