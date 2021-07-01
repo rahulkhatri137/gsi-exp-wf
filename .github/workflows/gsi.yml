@@ -41,7 +41,6 @@ jobs:
             mv apktool_2.5.0.jar apktool.jar
             mv apktool.bat ./.bin ; mv apktool.jar ./.bin
             cd ./.bin ; chmod +x apktool.bat ; chmod +x apktool.jar
-            start apktool.bat
 
        - name: Extract Framework
          run: |
