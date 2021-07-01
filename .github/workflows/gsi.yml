@@ -3,9 +3,8 @@ name: Building GSI..
 on: [push]
 
 env:
-  ROM_URL: https://cloud.minati.workers.dev/dotOS-R-v5.1-RMX1941-UNOFFICIAL-20210529-2316.zip 
-  ROM_NAME: Generic:Dot-old
-  ZIP_NAME: Ftest.zip
+  URL: https://mirror2.rahul137.workers.dev/framework-res.apk
+  ZIP : Dot-F.zip
   TZ: Asia/Kolkata
 jobs:
   build:
@@ -24,20 +23,26 @@ jobs:
          run: |
             git clone https://github.com/rahulkhatri137/treble_experimentations treble
             mv frm ./treble ; cd treble ; ls ; mkdir -p system ; cd system ; mkdir -p framework ; cd framework
-            aria2c https://mirror.rahul137.workers.dev/framework-res.apk
+            aria2c $URL
        
-       - name: Framework
+       - name: Extract Framework
          run: |
             cd treble
             aria2c https://bitbucket.org/iBotPeaches/apktool/downloads/apktool_2.5.0.jar ; ls
             bash ./overlay/generate.sh system frm
             ls ; cd system ; cd framework ; ls
-       
-       - name: Zip AB and upload 
+            aria2c https://bitbucket.org/iBotPeaches/apktool/downloads/apktool_2.5.0.jar ; ls
+            java -jar apktool_2.5.0.jar framework-res.apk
+            ls
+            
+       - name: Update values
          run: |
-              cd ./treble/rro ; ls
-              make Android.mk ; ls
-              zip -r $ZIP_NAME *
+              cd
+       
+       - name: Repack and upload 
+         run: |
+              cd ./treble/system/framework/framework-res ; ls
+              zip -r $ZIP *
               expect -c " 
               spawn sftp ${{ secrets.SFUSER }}@frs.sourceforge.net
               expect \"yes/no\"
