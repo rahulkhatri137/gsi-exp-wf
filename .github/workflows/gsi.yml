@@ -27,7 +27,7 @@ jobs:
          run: |
             cd jar
             java -jar jd-cli.jar services.jar
-            ls ; cd services.src.jar ; ls
+            unzip services.src.jar -d ; ls ; jar xf services.src.jar ; cd services.src ; ls
             
        - name: Update values
          run: |
