@@ -42,7 +42,7 @@ jobs:
          run: |
               cd ./treble/rro ; ls ; cd ./res/values ; ls
               mv brightness.xml ~/work/gsi-p-wf/gsi-p-wf/treble/system//framework/framework-res/res/values
-              cd ../xml ; mv prower_profile.xml ~/work/gsi-p-wf/gsi-p-wf/treble/system/framework/framework-res/res/xml
+              cd ../xml ; mv power_profile.xml ~/work/gsi-p-wf/gsi-p-wf/treble/system/framework/framework-res/res/xml
        
        - name: Repack and upload 
          run: |
