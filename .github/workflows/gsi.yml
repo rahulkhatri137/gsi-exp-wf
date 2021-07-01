@@ -41,11 +41,12 @@ jobs:
             mv apktool_2.5.0.jar apktool.jar
             mv apktool.bat ./.bin ; mv apktool.jar ./.bin
             cd ./.bin ; chmod +x apktool.bat ; chmod +x apktool.jar
+            start apktool.bat
 
        - name: Extract Framework
          run: |
             cd ./treble/system/framework
-            apktool framework-res.apk
+            ./.bin/apktool framework-res.apk
             ls ; cd framework-res ; ls
             
        - name: Update values
