@@ -38,7 +38,7 @@ jobs:
        
        - name: Repack
          run: |
-            cd framework/framework-res ; ls ; cd .. ; rm -rf ./framework-res/AndroidManifest.xml ; mv -f ./framework-res/original/AndroidManifest.xml ./framework-res ;rm -rf framework-res.apk
+            cd framework/framework-res ; ls ; cd .. ; rm -rf framework-res.apk
             java -jar apktool_2.5.0.jar b -f framework-res
             ls ; cd framework-res ; ls
 
