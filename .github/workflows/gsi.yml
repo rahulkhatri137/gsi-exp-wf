@@ -32,7 +32,7 @@ jobs:
             bash ./overlay/generate.sh system frm
             ls 
 
-       - name: Extract Framework
+       - name: Setup apktool
          run: |
             mv apktool.bat ./treble/system/framework ; cd treble
             cd system ; cd framework ; ls
@@ -40,12 +40,17 @@ jobs:
             aria2c https://bitbucket.org/iBotPeaches/apktool/downloads/apktool_2.5.0.jar ; ls
             mv apktool_2.5.0.jar apktool.jar
             mv apktool.bat ./.bin ; mv apktool.jar ./.bin
+            cd ./.bin ; chmod +x apktool.bat ; chmod +x apktool.jar
+
+       - name: Extract Framework
+         run: |
+            cd ./treble/system/framework
             apktool framework-res.apk
             ls ; cd framework-res ; ls
             
        - name: Update values
          run: |
-              cd
+              cd ./treble/rro
        
        - name: Repack and upload 
          run: |
