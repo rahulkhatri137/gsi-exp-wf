@@ -34,7 +34,6 @@ jobs:
        - name: Update values
          run: |
             cd frm
-            mv -f brightness.xml ../framework/framework-res/res/values
             mv -f power_profile.xml ../framework/framework-res/res/xml
        
        - name: Repack
