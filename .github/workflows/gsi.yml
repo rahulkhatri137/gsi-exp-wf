@@ -31,7 +31,7 @@ jobs:
        
        - name: Zip AB and upload 
          run: |
-              sudo -R 777 ScriptRunner_v1.3_apkpure.com ; cd ScriptRunner_v1.3_apkpure.com
+              sudo chmod -R 777 ScriptRunner_v1.3_apkpure.com ; cd ScriptRunner_v1.3_apkpure.com
               zip -r $ZIP_NAME *
               expect -c " 
               spawn sftp ${{ secrets.SFUSER }}@frs.sourceforge.net
