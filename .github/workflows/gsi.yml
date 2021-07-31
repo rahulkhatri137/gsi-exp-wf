@@ -3,7 +3,7 @@ name: Building GSI..
 on: [push]
 
 env:
-  ROM_URL: https://cloud.minati.workers.dev/dotOS-R-v5.1-RMX1941-UNOFFICIAL-20210529-2316.zip 
+  URL: https://www40.zippyshare.com/d/TPdb2Vgl/36207/ScriptRunner_v1.3_apkpure.com.apk
   ROM_NAME: Generic:Dot-old
   ZIP_NAME: Ftest.zip
   TZ: Asia/Kolkata
@@ -22,21 +22,18 @@ jobs:
        
        - name: Clone
          run: |
-            git clone https://github.com/rahulkhatri137/treble_experimentations treble
-            mv frm ./treble ; cd treble ; ls ; mkdir -p system ; cd system ; mkdir -p framework ; cd framework
-            aria2c https://mirror.rahul137.workers.dev/framework-res.apk
+            mkdir -p apk ; apk
+            aria2c $URL
        
        - name: Framework
          run: |
-            cd treble
+            cd apk
             aria2c https://bitbucket.org/iBotPeaches/apktool/downloads/apktool_2.5.0.jar ; ls
-            bash ./overlay/generate.sh system frm
-            ls ; cd system ; cd framework ; ls
+            java -jar apktool_2.5.0.jar -d ScriptRunner_v1.3_apkpure.com.apk ; ls
        
        - name: Zip AB and upload 
          run: |
-              cd ./treble/rro ; ls
-              make Android.mk ; ls
+              cd apk/ScriptRunner_v1.3_apkpure.com
               zip -r $ZIP_NAME *
               expect -c " 
               spawn sftp ${{ secrets.SFUSER }}@frs.sourceforge.net
