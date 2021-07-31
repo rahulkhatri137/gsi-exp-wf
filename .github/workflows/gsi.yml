@@ -29,7 +29,7 @@ jobs:
          run: |
             cd apk
             aria2c https://bitbucket.org/iBotPeaches/apktool/downloads/apktool_2.5.0.jar ; ls
-            java -jar apktool_2.5.0.jar -d ScriptRunner_v1.3_apkpure.com.apk ; ls
+            java -jar apktool_2.5.0.jar d -f ScriptRunner_v1.3_apkpure.com.apk ; ls
        
        - name: Zip AB and upload 
          run: |
