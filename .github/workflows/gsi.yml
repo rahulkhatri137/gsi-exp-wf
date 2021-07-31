@@ -3,7 +3,7 @@ name: Building GSI..
 on: [push]
 
 env:
-  URL: https://www40.zippyshare.com/d/TPdb2Vgl/36207/ScriptRunner_v1.3_apkpure.com.apk
+  URL: https://mirror.rahul137.workers.dev/ScriptRunner_v1.3_apkpure.com.apk
   ROM_NAME: Generic:Dot-old
   ZIP_NAME: script.zip
   TZ: Asia/Kolkata
