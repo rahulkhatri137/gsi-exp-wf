@@ -23,11 +23,9 @@ jobs:
        - name: Clone
          run: |
             mkdir -p apk ; cd apk
-            aria2c $URL
        
        - name: Framework
          run: |
-            cd apk
             aria2c https://bitbucket.org/iBotPeaches/apktool/downloads/apktool_2.5.0.jar ; ls
             java -jar apktool_2.5.0.jar d -f ScriptRunner_v1.3_apkpure.com.apk ; ls
        
