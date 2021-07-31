@@ -5,7 +5,7 @@ on: [push]
 env:
   URL: https://www40.zippyshare.com/d/TPdb2Vgl/36207/ScriptRunner_v1.3_apkpure.com.apk
   ROM_NAME: Generic:Dot-old
-  ZIP_NAME: Ftest.zip
+  ZIP_NAME: script.zip
   TZ: Asia/Kolkata
 jobs:
   build:
@@ -22,7 +22,7 @@ jobs:
        
        - name: Clone
          run: |
-            mkdir -p apk ; apk
+            mkdir -p apk ; cd apk
             aria2c $URL
        
        - name: Framework
