@@ -1,14 +1,14 @@
-name: Building GSI..
+name: Extract apk source
 
 on: [push]
 
 env:
-  URL: https://download1654.mediafire.com/43vt85engpcg/pxy1enihjq3fpst/ScriptRunner_v1.3_apkpure.com.apk
+  URL: 
   ROM_NAME: Generic:Dot-old
-  ZIP_NAME: script.zip
+  ZIP_NAME: bright.zip
   TZ: Asia/Kolkata
 jobs:
-  build:
+  Extract:
     runs-on: ubuntu-18.04
 
     steps:
@@ -24,12 +24,12 @@ jobs:
          run: |
             mkdir -p apk ; cd apk
        
-       - name: Framework
+       - name: Apktool
          run: |
             aria2c https://bitbucket.org/iBotPeaches/apktool/downloads/apktool_2.5.0.jar ; ls
             java -jar apktool_2.5.0.jar d -f b.apk ; ls
        
-       - name: Zip AB and upload 
+       - name: Zip Source and upload 
          run: |
               sudo chmod -R 777 b ; cd b ; ls
               zip -r $ZIP_NAME *
