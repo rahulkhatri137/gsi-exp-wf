@@ -43,7 +43,7 @@ jobs:
        - name: Upload 
          run: |
               sudo cp ./ErfanGSIs/working/system/system/vendor/build.prop ./ErfanGSIs/final
-              cd ErfanGSIs/final ; ls
+              cd ErfanGSIs/final ; ls ; sudo chmod 777 build.prop
               expect -c " 
               spawn sftp ${{ secrets.SFUSER }}@frs.sourceforge.net
               expect \"yes/no\"
