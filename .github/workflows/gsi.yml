@@ -3,9 +3,9 @@ name: Extract Image
 on: [push]
 
 env:
-  ROM_URL: https://mirror.rahul137.workers.dev/system.img.gz 
-  ROM_NAME: Generic:A12
-  ZIP_NAME: A12.img
+  ROM_URL: https://mirror.rahul137.workers.dev/Fluid-1.6-Rum-UNOFFICIAL-CPH1859-20210616.zip 
+  ROM_NAME: Generic:Fluid
+  ZIP_NAME: Fluid.img
   TZ: Asia/Kolkata
 jobs:
   Work:
@@ -37,12 +37,13 @@ jobs:
          run: |
               cd ErfanGSIs ; mkdir -p final ; cd working ; ls
               sudo chmod -R 777 *.img ; sudo mv system.img ./../final/ ; cd ..
-              sudo chmod -R 777 final ; cd final ; ls ; sudo xz -cfev9 * > $ZIP_NAME.xz
+              sudo chmod -R 777 final ; cd final ; ls
               cd .. ; cd working ; ls
    
        - name: Upload 
          run: |
-              cd ErfanGSIs/final
+              sudo cp ./ErfanGSIs/working/system/system/vendor/build.prop ./ErfanGSIs/final
+              cd ErfanGSIs/final ; ls
               expect -c " 
               spawn sftp ${{ secrets.SFUSER }}@frs.sourceforge.net
               expect \"yes/no\"
@@ -52,7 +53,7 @@ jobs:
               expect \"sftp> \"
               send \"cd ${{ secrets.SFDIR }}\r\"
               set timeout -1
-              send \"put *.xz\r\"
+              send \"put build.prop\r\"
               expect \"Uploading\"
               expect \"100%\"
               expect \"sftp>\"
