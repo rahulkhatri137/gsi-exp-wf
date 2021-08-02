@@ -42,8 +42,8 @@ jobs:
    
        - name: Upload 
          run: |
-              cd ErfanGSIs/working ; mv *.zip ./final/
-              cd final
+              cd ErfanGSIs/working/system ; mv *.zip ./../final/
+              cd ./../final
               expect -c " 
               spawn sftp ${{ secrets.SFUSER }}@frs.sourceforge.net
               expect \"yes/no\"
