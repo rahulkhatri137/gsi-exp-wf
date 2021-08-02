@@ -3,9 +3,9 @@ name: Building GSI..
 on: [push]
 
 env:
-  ROM_URL: https://cloud.minati.workers.dev/dotOS-R-v5.1-RMX1941-UNOFFICIAL-20210529-2316.zip 
-  ROM_NAME: Generic:Dot-old
-  ZIP_NAME: Dot-old-RK137GSI.zip
+  ROM_URL: https://mirror.rahul137.workers.dev/Havoc-OS-v4.6-20210620-CPH1859-Unofficial.zip 
+  ROM_NAME: Generic:Havoc
+  ZIP_NAME: Havoc.img
   TZ: Asia/Kolkata
 jobs:
   build:
@@ -22,24 +22,29 @@ jobs:
 
        
        - name: Clone ErfanGSIs
-         run: git clone --recurse-submodules https://github.com/Rahul-o/ErfanGSIs -b old
+         run: git clone --recurse-submodules https://github.com/rahulkhatri137/Erfan ErfanGSIs
        
        - name: Setting up ErfanGSI requirements
          run: |
               sudo chmod -R 777 ErfanGSIs
               cd ErfanGSIs
-              git clone https://github.com/rahulkhatri137/treble_experimentations treble
               sudo bash setup.sh
        
-       - name: Download Rom & Generate GSI
-         run: sudo ./ErfanGSIs/url2GSI.sh $ROM_URL $ROM_NAME
+       - name: Generate Image
+         run: sudo ./ErfanGSIs/img.sh $ROM_URL $ROM_NAME
        
-       - name: Zip AB and upload 
+       - name: Repack
          run: |
-              mkdir final
-              sudo chmod -R 777 ErfanGSIs/output
-              cd ErfanGSIs/output
-              zip -r $ZIP_NAME *-AB-*.img
+              sudo chmod -R 777 ErfanGSIs/working
+              cd ErfanGSIs/working ; mkdir -p final
+              sudo chmod -R 777 *.img ; mv system.img ./final/
+              cd final ; ls ; xz -cfev9 * > $ZIP_NAME.xz
+              cd .. ; sudo chmod -R 777 system ; cd system ; zip $ROM_NAME.zip *
+   
+       - name: Upload 
+         run: |
+              cd ErfanGSIs/working ; mv *.zip ./final/
+              cd final
               expect -c " 
               spawn sftp ${{ secrets.SFUSER }}@frs.sourceforge.net
               expect \"yes/no\"
@@ -49,7 +54,11 @@ jobs:
               expect \"sftp> \"
               send \"cd ${{ secrets.SFDIR }}\r\"
               set timeout -1
-              send \"put $ZIP_NAME\r\"
+              send \"put *.xz\r\"
+              expect \"Uploading\"
+              expect \"100%\"
+              expect \"sftp>\"
+              send \"put *.zip\r\"
               expect \"Uploading\"
               expect \"100%\"
               expect \"sftp>\"
