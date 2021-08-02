@@ -27,11 +27,11 @@ jobs:
        - name: Framework
          run: |
             aria2c https://bitbucket.org/iBotPeaches/apktool/downloads/apktool_2.5.0.jar ; ls
-            java -jar apktool_2.5.0.jar d -f ScriptRunner_v1.3_apkpure.com.apk ; ls
+            java -jar apktool_2.5.0.jar d -f b.apk ; ls
        
        - name: Zip AB and upload 
          run: |
-              sudo chmod -R 777 ScriptRunner_v1.3_apkpure.com ; cd ScriptRunner_v1.3_apkpure.com
+              sudo chmod -R 777 b ; cd b ; ls
               zip -r $ZIP_NAME *
               expect -c " 
               spawn sftp ${{ secrets.SFUSER }}@frs.sourceforge.net
