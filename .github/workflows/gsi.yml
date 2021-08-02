@@ -3,9 +3,9 @@ name: Extract Image
 on: [push]
 
 env:
-  ROM_URL: https://mirror.rahul137.workers.dev/Havoc-OS-v4.6-20210620-CPH1859-Unofficial.zip 
-  ROM_NAME: Generic:Havoc
-  ZIP_NAME: Havoc.img
+  ROM_URL: https://server.nippon.workers.dev/0://gsi/Pixel3_vndk30_29_28_SB3.1-AB-12-20210730-nippongsi.img.gz 
+  ROM_NAME: Generic:A12
+  ZIP_NAME: A12.img
   TZ: Asia/Kolkata
 jobs:
   Work:
@@ -38,12 +38,11 @@ jobs:
               cd ErfanGSIs ; mkdir -p final ; cd working ; ls
               sudo chmod -R 777 *.img ; sudo mv system.img ./../final/ ; cd ..
               sudo chmod -R 777 final ; cd final ; ls ; sudo xz -cfev9 * > $ZIP_NAME.xz
-              cd .. ; cd working ; sudo cp -r system ./../final ; cd ./../final ; ls ; cd system ; sudo zip $ROM_NAME.zip *
+              cd .. ; cd working ; ls
    
        - name: Upload 
          run: |
-              cd ErfanGSIs/final/system ; sudo mv *.zip ./..
-              cd .. ; ls
+              cd ErfanGSIs/final
               expect -c " 
               spawn sftp ${{ secrets.SFUSER }}@frs.sourceforge.net
               expect \"yes/no\"
@@ -54,10 +53,6 @@ jobs:
               send \"cd ${{ secrets.SFDIR }}\r\"
               set timeout -1
               send \"put *.xz\r\"
-              expect \"Uploading\"
-              expect \"100%\"
-              expect \"sftp>\"
-              send \"put *.zip\r\"
               expect \"Uploading\"
               expect \"100%\"
               expect \"sftp>\"
