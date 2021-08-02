@@ -35,15 +35,15 @@ jobs:
        
        - name: Repack
          run: |
-              cd ErfanGSIs/working ; sudo mkdir -p final ; ls
-              sudo chmod -R 777 *.img ; sudo mv system.img ./final/
-              cd final ; ls ; sudo xz -cfev9 * > $ZIP_NAME.xz
-              cd .. ; cd system ; sudo zip $ROM_NAME.zip *
+              cd ErfanGSIs ; mkdir -p final ; cd working ; ls
+              sudo chmod -R 777 *.img ; sudo mv system.img ./../final/ ; cd ..
+              sudo chmod -R 777 final ; cd final ; ls ; sudo xz -cfev9 * > $ZIP_NAME.xz
+              cd .. ; cd working ; sudo cp -r system ./../final ; cd ./../final ; ls ; cd system ; sudo zip $ROM_NAME.zip *
    
        - name: Upload 
          run: |
-              cd ErfanGSIs/working/system ; sudo mv *.zip ./../final/
-              cd ./../final ; ls
+              cd ErfanGSIs/final/system ; sudo mv *.zip ./..
+              cd .. ; ls
               expect -c " 
               spawn sftp ${{ secrets.SFUSER }}@frs.sourceforge.net
               expect \"yes/no\"
