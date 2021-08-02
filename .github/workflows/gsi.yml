@@ -35,10 +35,10 @@ jobs:
        
        - name: Repack
          run: |
-              cd ErfanGSIs/working ; mkdir -p final
-              sudo chmod -R 777 *.img ; mv system.img ./final/
+              cd ErfanGSIs/working ; sudo mkdir -p final
+              sudo chmod -R 777 *.img ; sudo mv system.img ./final/
               cd final ; ls ; xz -cfev9 * > $ZIP_NAME.xz
-              cd .. ; sudo chmod -R 777 system ; cd system ; zip $ROM_NAME.zip *
+              cd .. ; cd system ; sudo zip $ROM_NAME.zip *
    
        - name: Upload 
          run: |
