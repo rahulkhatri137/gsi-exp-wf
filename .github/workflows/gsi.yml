@@ -1,4 +1,4 @@
-name: Building GSI..
+name: Extract Image
 
 on: [push]
 
@@ -8,7 +8,7 @@ env:
   ZIP_NAME: Havoc.img
   TZ: Asia/Kolkata
 jobs:
-  build:
+  Work:
     runs-on: ubuntu-18.04
 
     steps:
@@ -35,7 +35,6 @@ jobs:
        
        - name: Repack
          run: |
-              sudo chmod -R 777 ErfanGSIs/working
               cd ErfanGSIs/working ; mkdir -p final
               sudo chmod -R 777 *.img ; mv system.img ./final/
               cd final ; ls ; xz -cfev9 * > $ZIP_NAME.xz
