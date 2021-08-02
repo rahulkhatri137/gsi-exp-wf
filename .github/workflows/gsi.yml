@@ -3,7 +3,7 @@ name: Extract Image
 on: [push]
 
 env:
-  ROM_URL: https://server.nippon.workers.dev/0://gsi/Pixel3_vndk30_29_28_SB3.1-AB-12-20210730-nippongsi.img.gz 
+  ROM_URL: https://mirror.rahul137.workers.dev/system.img.gz 
   ROM_NAME: Generic:A12
   ZIP_NAME: A12.img
   TZ: Asia/Kolkata
