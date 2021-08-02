@@ -37,13 +37,12 @@ jobs:
          run: |
               cd ErfanGSIs ; mkdir -p final ; cd working ; ls
               sudo chmod -R 777 *.img ; sudo mv system.img ./../final/ ; cd ..
-              sudo chmod -R 777 final ; cd final ; ls
+              sudo chmod -R 777 final ; cd final ; ls ; sudo xz -cfev9 * > $ZIP_NAME.xz
               cd .. ; cd working ; ls
    
        - name: Upload 
          run: |
-              sudo cp ./ErfanGSIs/working/system/system/vendor/build.prop ./ErfanGSIs/final
-              cd ErfanGSIs/final ; ls ; sudo chmod 777 build.prop
+              cd ErfanGSIs/final ; ls
               expect -c " 
               spawn sftp ${{ secrets.SFUSER }}@frs.sourceforge.net
               expect \"yes/no\"
@@ -53,7 +52,7 @@ jobs:
               expect \"sftp> \"
               send \"cd ${{ secrets.SFDIR }}\r\"
               set timeout -1
-              send \"put build.prop\r\"
+              send \"put *.xz\r\"
               expect \"Uploading\"
               expect \"100%\"
               expect \"sftp>\"
