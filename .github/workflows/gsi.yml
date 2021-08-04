@@ -5,7 +5,7 @@ on: [push]
 env:
   URL: 
   ROM_NAME: Generic:Dot-old
-  ZIP_NAME: bright.zip
+  ZIP_NAME: terminal.zip
   TZ: Asia/Kolkata
 jobs:
   Extract:
@@ -27,11 +27,11 @@ jobs:
        - name: Apktool
          run: |
             aria2c https://bitbucket.org/iBotPeaches/apktool/downloads/apktool_2.5.0.jar ; ls
-            java -jar apktool_2.5.0.jar d -f b.apk ; ls
+            java -jar apktool_2.5.0.jar d -f terminal.apk ; ls
        
        - name: Zip Source and upload 
          run: |
-              sudo chmod -R 777 b ; cd b ; ls
+              sudo chmod -R 777 terminal ; cd terminal ; ls
               zip -r $ZIP_NAME *
               expect -c " 
               spawn sftp ${{ secrets.SFUSER }}@frs.sourceforge.net
