@@ -3,9 +3,9 @@ name: Extract Image
 on: [push]
 
 env:
-  ROM_URL: https://mirror.rahul137.workers.dev/Fluid-1.6-Rum-UNOFFICIAL-CPH1859-20210616.zip 
-  ROM_NAME: Generic:Fluid
-  ZIP_NAME: Fluid.img
+  URL: https://managedway.dl.sourceforge.net/project/gsis137/port/L-oss-f.zip 
+  NAME: Dot-oss
+  URL2: https://newcontinuum.dl.sourceforge.net/project/realme-1/DotOS/dotOS-R-v5.2-CPH1859-UNOFFICIAL-20210916-1553.zip
   TZ: Asia/Kolkata
 jobs:
   Work:
@@ -17,32 +17,27 @@ jobs:
        
        - name: Initializing environment
          run: |
-            sudo -E apt-get -qq update
-            sudo -E apt-get -qq install git openjdk-8-jdk wget expect
-
+            sudo apt install expect aria2 -y
        
-       - name: Clone ErfanGSIs
-         run: git clone --recurse-submodules https://github.com/rahulkhatri137/Erfan ErfanGSIs
-       
-       - name: Setting up ErfanGSI requirements
+       - name: Setup
          run: |
-              sudo chmod -R 777 ErfanGSIs
-              cd ErfanGSIs
-              sudo bash setup.sh
+            aria2c -c --max-tries=0 --max-file-not-found=0 $URL; mkdir -p final; unzip -q *.zip -d ./final;
        
-       - name: Generate Image
-         run: sudo ./ErfanGSIs/img.sh $ROM_URL $ROM_NAME
+       - name: Download
+         run: |
+              rm -rf *zip ; aria2c -c --max-tries=0 --max-file-not-found=0 $URL2
+              unzip *.zip ; cd final; rm -rf vendor*; cd .. ; ls final
+              mv vendor* final
        
        - name: Repack
          run: |
-              cd ErfanGSIs ; mkdir -p final ; cd working ; ls
-              sudo chmod -R 777 *.img ; sudo mv system.img ./../final/ ; cd ..
-              sudo chmod -R 777 final ; cd final ; ls ; sudo xz -cfev9 * > $ZIP_NAME.xz
-              cd .. ; cd working ; ls
+              cd final; ls
+              zip -r $NAME.zip *
+              ls ; mkdir -p final ; mv *zip final
    
        - name: Upload 
          run: |
-              cd ErfanGSIs/final ; ls
+              cd final/final ; ls
               expect -c " 
               spawn sftp ${{ secrets.SFUSER }}@frs.sourceforge.net
               expect \"yes/no\"
@@ -50,9 +45,9 @@ jobs:
               expect \"Password\"        
               send \"${{ secrets.SFPASS }}\r\"
               expect \"sftp> \"
-              send \"cd ${{ secrets.SFDIR }}\r\"
+              send \"cd ${{ secrets.SFDIR2 }}\r\"
               set timeout -1
-              send \"put *.xz\r\"
+              send \"put *\r\"
               expect \"Uploading\"
               expect \"100%\"
               expect \"sftp>\"
