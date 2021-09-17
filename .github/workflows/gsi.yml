@@ -21,12 +21,12 @@ jobs:
        
        - name: Setup
          run: |
-            aria2c -c --max-tries=0 --max-file-not-found=0 $URL; mkdir -p final; unzip -q *.zip -d ./final;
+            aria2c -c --max-tries=0 --max-file-not-found=0 $URL; mkdir -p final; unzip -q *.zip -d ./final; cd final; rm -rf vendor*
        
        - name: Download
          run: |
               rm -rf *zip ; aria2c -c --max-tries=0 --max-file-not-found=0 $URL2
-              unzip *.zip ; cd final; rm -rf vendor*; cd .. ; ls final
+              unzip *.zip ; ls final
               mv vendor* final
        
        - name: Repack
