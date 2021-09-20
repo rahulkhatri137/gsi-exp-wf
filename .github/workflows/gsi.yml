@@ -5,7 +5,7 @@ on: [push]
 env:
   URL: https://managedway.dl.sourceforge.net/project/gsis137/port/L-oss-f.zip 
   NAME: Dot-oss
-  URL2: https://newcontinuum.dl.sourceforge.net/project/realme-1/DotOS/dotOS-R-v5.2-CPH1859-UNOFFICIAL-20210916-1553.zip
+  URL2: https://managedway.dl.sourceforge.net/project/realme-1/DotOS/OSS/dotOS-R-v5.2-CPH1859-UNOFFICIAL-20210919-0242.zip
   TZ: Asia/Kolkata
 jobs:
   Work:
