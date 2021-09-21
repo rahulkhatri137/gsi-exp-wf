@@ -4,8 +4,8 @@ on: [push]
 
 env:
   URL: https://managedway.dl.sourceforge.net/project/gsis137/port/L-oss-f.zip 
-  NAME: Dot-oss
-  URL2: https://managedway.dl.sourceforge.net/project/realme-1/DotOS/OSS/dotOS-R-v5.2-CPH1859-UNOFFICIAL-20210919-0242.zip
+  NAME: Sakura-oss-20210921
+  URL2: https://master.dl.sourceforge.net/project/realme-1/ProjectSakura/OSS/ProjectSakura-5.2-GAPPS-Basic-20210919-0439-CPH1859-UNOFFICIAL.zip?viasf=1
   TZ: Asia/Kolkata
 jobs:
   Work:
