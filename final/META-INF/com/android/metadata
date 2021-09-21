@@ -1,0 +1,9 @@
+ota-property-files=metadata:69:317         
+ota-required-cache=0
+ota-type=BLOCK
+post-build=google/sunfish/sunfish:11/RP1A.201105.002/6869500:user/release-keys
+post-build-incremental=eng.fahima.20201112.095736
+post-sdk-level=29
+post-security-patch-level=2020-11-05
+post-timestamp=1605175052
+pre-device=CPH1859,CPH1861

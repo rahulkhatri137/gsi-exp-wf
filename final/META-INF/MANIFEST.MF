@@ -1,0 +1,24 @@
+Manifest-Version: 1.0
+Created-By: MiXplorer
+
+Name: META-INF/com/google/android/updater-script
+SHA1-Digest: SUjXmngbmPL4IsPVqsedWjnHC0s=
+
+Name: vendor.transfer.list
+SHA1-Digest: aRRfcZhwcPkfCVNIf6YOO0lKKEc=
+
+Name: META-INF/com/google/android/update-binary
+SHA1-Digest: qNZ0Cui4u5vCMLsNDaHNEvkTwZM=
+
+Name: META-INF/com/android/metadata
+SHA1-Digest: V/aHu1x2ehIbez2jSDl0rnjwt8Q=
+
+Name: vendor.patch.dat
+SHA1-Digest: 2jmj7l5rSw0yVb/vlWAYkK/YBwk=
+
+Name: odmdtbo.img
+SHA1-Digest: +BxwZ9U1jBxUXmDytOT3EkQU580=
+
+Name: vendor.new.dat.br
+SHA1-Digest: HC2lozr4JwCePAFDashOxEhRJMM=
+

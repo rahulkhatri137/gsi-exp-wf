@@ -1,0 +1,7 @@
+assert(getprop("ro.product.device") == "CPH1859" || getprop("ro.build.product") == "CPH1859" || 
+       getprop("ro.product.device") == "CPH1861" || getprop("ro.build.product") == "CPH1861" || abort("E3004: This package is for device: CPH1859,CPH1861; this device is " + getprop("ro.product.device") + "."););
+ifelse(is_mounted("/vendor"), unmount("/vendor"));
+show_progress(0.800000, 0);
+block_image_update("/dev/block/platform/bootdevice/by-name/vendor", package_extract_file("vendor.transfer.list"), "vendor.new.dat.br", "vendor.patch.dat") ||
+  abort("E2001: Failed to update vendor image.");
+set_progress(1.000000);
