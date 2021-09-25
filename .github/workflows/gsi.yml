@@ -28,11 +28,11 @@ jobs:
          run: |
               cd final; ls
               zip -r $NAME.zip *
-              ls ; mkdir -p final ; mv *zip final
+              ls
    
        - name: Upload 
          run: |
-              cd final/final ; ls
+              cd final ; ls
               expect -c " 
               spawn sftp ${{ secrets.SFUSER }}@frs.sourceforge.net
               expect \"yes/no\"
@@ -42,7 +42,7 @@ jobs:
               expect \"sftp> \"
               send \"cd ${{ secrets.SFDIR2 }}\r\"
               set timeout -1
-              send \"put *\r\"
+              send \"put *zip\r\"
               expect \"Uploading\"
               expect \"100%\"
               expect \"sftp>\"
