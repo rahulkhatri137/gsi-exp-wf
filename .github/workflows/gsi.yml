@@ -3,8 +3,8 @@ name: Pack oss vendor
 on: [push]
 
 env:
-  NAME: PE+-oss-20210925
-  URL: https://master.dl.sourceforge.net/project/ghost-lab/ROMS/pe-plus/PixelExperience_Plus_CPH1859-11.0-20210925-0341-UNOFFICIAL.zip?viasf=1
+  NAME: Cesium-oss-20210927
+  URL: https://sourceforge.net/projects/cesiumos-org/files/CPH1859/CesiumOS-v3.9-CPH1859-20210926-1254-OFFICIAL.zip/download
   TZ: Asia/Kolkata
 jobs:
   Work:
