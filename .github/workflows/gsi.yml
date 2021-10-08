@@ -16,7 +16,7 @@ jobs:
            
        - name: Initializing environment
          run: |
-            sudo -E apt-get -qq expect simg2img aria2c
+            sudo apt install expect simg2img aria2c -y
        
        - name: Download
          run: |
