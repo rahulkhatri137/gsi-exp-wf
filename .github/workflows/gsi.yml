@@ -1,13 +1,13 @@
-name: Updating framework
+name: Merge vndk28
 
 on: [push]
 
 env:
-  URL : https://sourceforge.net/projects/nippongsi/files/AOSP%20-%20CipherOS-2.0%20-%20HXXMTHQZNW/CipherOS-2.0-AB-12-20211007-nippongsi.img.gz
+  URL : https://udomain.dl.sourceforge.net/project/nippongsi/AOSP%20-%20CipherOS-2.0%20-%20HXXMTHQZNW/CipherOS-2.0-AB-12-20211007-nippongsi.img.gz
   ZIP_NAME : test.zip
   TZ: Asia/Kolkata
 jobs:
-  Framework:
+  Merge:
     runs-on: ubuntu-18.04
 
     steps:
