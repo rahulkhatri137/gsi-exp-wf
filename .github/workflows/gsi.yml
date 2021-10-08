@@ -21,25 +21,22 @@ jobs:
        - name: Download
          run: |
             aria2c -x16 -j$(nproc) -U "Mozilla/5.0" -o $ZIP_NAME $URL
-            gz -d $ZIP_NAME
+            gzip -d $ZIP_NAME
             
        - name: Extract
          run: |
-            mkdir -p a ; ls
-            sudo mount -o rw,sync 
+            mkdir -p a ; ls ; e2fsck -f *img
+            sudo mount -o rw,sync *.img a
             
        - name: Update values
          run: |
-            cd final
-            mv -f power_profile.xml ../framework/framework-res/res/xml
-            rm -rf ../framework/framework-res/res/values/styles.xml
-            mv -f styles.xml ../framework/framework-res/res/values
+            ls a/ ; ls a/system
+            mv *.apex a/system/apex/
+            ls a/system/apex
 
        - name: Repack
          run: |
-            cd framework/framework-res ; ls ; cd .. ; rm -rf framework-res.apk
-            java -jar apktool_2.5.0.jar b -f framework-res
-            ls 
+            e2fsck -f *img ; gzip *img ; mkdir final ; mv *gz final/
 
        - name: Upload
          run: |
@@ -53,7 +50,7 @@ jobs:
             expect \"sftp> \"
             send \"cd ${{ secrets.SFDIR }}\r\"
             set timeout -1
-            send \"put *.apk\r\"
+            send \"put *\r\"
             expect \"Uploading\"
             expect \"100%\"
             expect \"sftp>\"
