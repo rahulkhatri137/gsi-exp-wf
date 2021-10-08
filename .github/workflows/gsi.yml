@@ -3,8 +3,9 @@ name: Updating framework
 on: [push]
 
 env:
-  URL: https://mirror.rahul137.workers.dev/framework-res.apk
+  URL : https://sourceforge.net/projects/nippongsi/files/Pixel%20-%20Pixel3_Candidate_Beta5%20-%20CDMBK0TUHX/Pixel3_Candidate_Beta5-AB-12-20210909-nippongsi.img.gz
   ZIP : Fluid-Ft.zip
+  URL2 : https://sourceforge.net/projects/nippongsi/files/AOSP%20-%20CipherOS-2.0%20-%20HXXMTHQZNW/CipherOS-2.0-AB-12-20211007-nippongsi.img.gz
   TZ: Asia/Kolkata
 jobs:
   Framework:
@@ -16,24 +17,22 @@ jobs:
            
        - name: Initializing environment
          run: |
-            sudo -E apt-get -qq update
-            sudo -E apt-get -qq install git openjdk-8-jdk aria2 expect xmlstarlet make
+            git clone https://github.com/rahulkhatri137/Erfan
+            sudo bash Erfan/setup.sh
        
        - name: Download
          run: |
-            ls ; mkdir -p framework ; cd framework
-            aria2c $URL
-            aria2c https://bitbucket.org/iBotPeaches/apktool/downloads/apktool_2.5.0.jar
-
-       - name: Extract Framework
+            ls
+            aria2c $URL2
+            
+       - name: Extract
          run: |
-            cd framework
-            java -jar apktool_2.5.0.jar d -f framework-res.apk
-            ls ; cd framework-res ; ls
+            sudo bash Erfan/img.sh $URL
+            ls ; cd ErfanGSIs/working ; ls
             
        - name: Update values
          run: |
-            cd frm
+            cd final
             mv -f power_profile.xml ../framework/framework-res/res/xml
             rm -rf ../framework/framework-res/res/values/styles.xml
             mv -f styles.xml ../framework/framework-res/res/values
@@ -42,11 +41,11 @@ jobs:
          run: |
             cd framework/framework-res ; ls ; cd .. ; rm -rf framework-res.apk
             java -jar apktool_2.5.0.jar b -f framework-res
-            ls ; cd framework-res ; ls ; cd dist ; ls
+            ls 
 
        - name: Upload
          run: |
-            cd ./framework/framework-res/dist ; ls 
+            cd final ; ls 
             expect -c " 
             spawn sftp ${{ secrets.SFUSER }}@frs.sourceforge.net
             expect \"yes/no\"
