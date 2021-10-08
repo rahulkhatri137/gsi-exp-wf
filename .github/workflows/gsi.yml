@@ -4,7 +4,7 @@ on: [push]
 
 env:
   URL : https://udomain.dl.sourceforge.net/project/nippongsi/AOSP%20-%20CipherOS-2.0%20-%20HXXMTHQZNW/CipherOS-2.0-AB-12-20211007-nippongsi.img.gz
-  ZIP_NAME : test.zip
+  ZIP_NAME : test.gz
   TZ: Asia/Kolkata
 jobs:
   Merge:
@@ -16,18 +16,17 @@ jobs:
            
        - name: Initializing environment
          run: |
-            git clone https://github.com/rahulkhatri137/ErfanGSIs
-            sudo bash ErfanGSIs/setup.sh
+            sudo -E apt-get -qq expect simg2img aria2c
        
        - name: Download
          run: |
-            ls ; cd ErfanGSIs ; aria2c -x16 -j$(nproc) -U "Mozilla/5.0" -o $ZIP_NAME $URL
-            sudo bash zip2img.sh $ZIP_NAME
+            aria2c -x16 -j$(nproc) -U "Mozilla/5.0" -o $ZIP_NAME $URL
+            gz -d $ZIP_NAME
             
        - name: Extract
          run: |
-            sudo bash Erfan/img.sh $URL
-            ls ; cd ErfanGSIs/working ; ls
+            mkdir -p a ; ls
+            sudo mount -o rw,sync 
             
        - name: Update values
          run: |
