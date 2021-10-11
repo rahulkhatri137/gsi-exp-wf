@@ -3,8 +3,8 @@ name: Pack oss vendor
 on: [push]
 
 env:
-  NAME: Cesium-oss-20210927
-  URL: https://sourceforge.net/projects/cesiumos-org/files/CPH1859/CesiumOS-v3.9-CPH1859-20210926-1254-OFFICIAL.zip/download
+  NAME: Dot-oss-20211011
+  URL: https://sourceforge.net/projects/realme-1/files/DotOS/OSS/dotOS-R-v5.2-CPH1859-UNOFFICIAL-20211010-0713.zip/download
   TZ: Asia/Kolkata
 jobs:
   Work:
