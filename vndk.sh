@@ -10,7 +10,7 @@ TARGETDIR=$LOCALDIR/out
 apex_check() {
   apex_extract=""
   if ls $systemdir/apex | grep -q ".apex$" ;then
-     echo "$DETECTED_APEX"
+     echo "DETECTED_APEX"
   fi
   if ! (ls $systemdir/apex | grep -q ".apex$") ; then
     rm -rf $systemdir/apex/com.android.vndk.current
@@ -21,7 +21,7 @@ apex_check
 7z x -y $LOCALDIR/com.android.vndk.v28.apex.7z -o$systemdir/apex/ > /dev/null 2>&1
 7z x -y $LOCALDIR/com.android.vndk.v29.apex.7z -o$systemdir/apex/ > /dev/null 2>&1
 7z x -y $LOCALDIR/com.android.vndk.v30.apex.7z -o$systemdir/apex/ > /dev/null 2>&1
-cd $bin/apex_tools
+cd $LOCALDIR/apex_tools
 ./apex_extractor.sh "$TARGETDIR" "$systemdir/apex"
 cd $LOCALDIR
 
