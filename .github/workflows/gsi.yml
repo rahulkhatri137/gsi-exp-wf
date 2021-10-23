@@ -3,8 +3,8 @@ name: Merge vndk28
 on: [push]
 
 env:
-  URL : https://netix.dl.sourceforge.net/project/trebleexperience/Pixel%20-%20LN5DXUA6LB/trebleExp%5BPixel%5D-blueline-%5BGSI%2BSGSI%5D-SP1A.210812.015-AB-12-20211019.img.gz
-  ZIP_NAME : test.img.gz
+  URL : https://managedway.dl.sourceforge.net/project/gsitutorials-sgsi/SGSI/A12Beta/Pixel3-SP1A-A12-SGSI-GSI-Tutorials.7z
+  ZIP_NAME : test.img.7z
   TZ: Asia/Kolkata
 jobs:
   Merge:
@@ -21,7 +21,7 @@ jobs:
        - name: Download
          run: |
             aria2c -x16 -j$(nproc) -U "Mozilla/5.0" -o $ZIP_NAME $URL
-            gzip -d $ZIP_NAME
+            7z x -y $ZIP_NAME -o.
             
        - name: Mount
          run: |
