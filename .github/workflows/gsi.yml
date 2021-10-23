@@ -25,7 +25,7 @@ jobs:
             
        - name: Mount
          run: |
-            ls ; e2fsck -f *img
+            ls
             sudo mount -o rw,sync *.img system
             
        - name: Update vndk
