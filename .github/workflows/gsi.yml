@@ -25,7 +25,7 @@ jobs:
             
        - name: Mount
          run: |
-            ls
+            mkdir system ; mkdir out ; ls
             sudo mount -o rw,sync *.img system
             
        - name: Update vndk
