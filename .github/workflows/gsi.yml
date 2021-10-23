@@ -21,7 +21,7 @@ jobs:
        - name: Download
          run: |
             aria2c -x16 -j$(nproc) -U "Mozilla/5.0" -o $ZIP_NAME $URL
-            7z x -y $ZIP_NAME -o.
+            7z x -y $ZIP_NAME -o. ; rm -rf *7z ; rm -rf *txt
             
        - name: Mount
          run: |
