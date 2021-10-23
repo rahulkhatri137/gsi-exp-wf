@@ -30,7 +30,7 @@ jobs:
             
        - name: Update vndk
          run: |
-            ls system/system/apex
+            ls system/system ; pip3 install -U -r apex_tools/requirements.txt
             sudo bash vndk.sh ; ls out ; echo "System/apex" ; ls system/system/apex 
 
        - name: Repack
