@@ -19,20 +19,21 @@ jobs:
             docker rmi `docker images -q`
             sudo apt install expect simg2img p7zip aria2 coreutils qemu-utils -y
        
-       - name: Download
+       - name: Download & Extract
          run: |
             aria2c -x16 -j$(nproc) -U "Mozilla/5.0" -o $ZIP_NAME $URL
             7z x $ZIP_NAME ; rm -rf *zip *7z ; ls
             
-       - name: Extract
+       - name: Mount
          run: |
             mkdir -p a ; ls ; e2fsck -pf *img ; sudo resize2fs system.img 2800M
-            sudo mount -o rw,sync *.img a ; sudo dd if=/dev/loop0 bs=1M count=40 status=none > /dev/null 2>&1 ;  df -h
+            sudo mount -o rw,sync *.img a ; df -h
             
-       - name: Add vndk28
+       - name: Link vndk28
          run: |
             sudo cp -fr *.apex a/system/apex/
-            ls a/system/apex ; ls a/system/lib
+            ls a/system/apex ; ls a/system
+            rm -rf $systempath/lib/vndk-28 $systempath/lib/vndk-sp-28 ; rm -rf $systempath/lib64/vndk-28 $systempath/lib64/vndk-sp-28
             ln -s  /apex/com.android.vndk.v28/lib a/system/lib/vndk-28
             ln -s  /apex/com.android.vndk.v28/lib64 a/system/lib64/vndk-28
             ln -s  /apex/com.android.vndk.v28/lib a/system/lib/vndk-sp-28
