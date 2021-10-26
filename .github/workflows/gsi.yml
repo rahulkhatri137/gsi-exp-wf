@@ -16,8 +16,7 @@ jobs:
            
        - name: Initializing environment
          run: |
-            sudo -E apt-get -y purge azure-cli ghc* zulu* hhvm llvm* firefox google* dotnet* powershell openjdk* mysql* php*
-            sudo -E apt-get -y autoremove --purge
+            docker rmi `docker images -q`
             sudo apt install expect simg2img p7zip aria2 coreutils -y
        
        - name: Download
