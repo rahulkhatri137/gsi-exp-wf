@@ -31,8 +31,8 @@ jobs:
        - name: Link vndk28
          run: |
             sudo cp -fr *.apex a/system/apex/
-            ls a/system/apex ; ls a/system
-            sudo rm -rf a/system/lib/vndk-28 a/system/lib/vndk-sp-28 a/system/lib64/vndk-28 a/system/lib64/vndk-sp-28
+            ls a/system/apex
+            sudo rm -rf a/system/lib/vndk-28 ; sudo rm -rf a/system/lib/vndk-sp-28 ; sudo rm -rf a/system/lib64/vndk-28 ; sudo rm -rf a/system/lib64/vndk-sp-28
             sudo ln -s  /apex/com.android.vndk.v28/lib a/system/lib/vndk-28
             sudo ln -s  /apex/com.android.vndk.v28/lib64 a/system/lib64/vndk-28
             sudo ln -s  /apex/com.android.vndk.v28/lib a/system/lib/vndk-sp-28
