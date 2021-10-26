@@ -16,12 +16,12 @@ jobs:
            
        - name: Initializing environment
          run: |
-            sudo apt install expect simg2img p7zip aria2 -y
+            sudo apt install expect simg2img p7zip aria2 coreutils -y
        
        - name: Download
          run: |
             aria2c -x16 -j$(nproc) -U "Mozilla/5.0" -o $ZIP_NAME $URL
-            7z x $ZIP_NAME ; ls ; rm -rf *zip ; rm -rf *7z
+            7z x $ZIP_NAME ; ls ; rm -rf *zip *7z
             
        - name: Extract
          run: |
@@ -35,6 +35,8 @@ jobs:
             ls a/system/apex
             ln -s  /apex/com.android.vndk.v28/lib a/system/system/lib/vndk-28
             ln -s  /apex/com.android.vndk.v28/lib64 a/system/system/lib64/vndk-28
+            ln -s  /apex/com.android.vndk.v28/lib a/system/system/lib/vndk-sp-28
+            ln -s  /apex/com.android.vndk.v28/lib64 a/system/system/lib/vndk-sp-28
 
        - name: Repack
          run: |
