@@ -21,11 +21,11 @@ jobs:
        - name: Download
          run: |
             aria2c -x16 -j$(nproc) -U "Mozilla/5.0" -o $ZIP_NAME $URL
-            7z x $ZIP_NAME ; ls
+            7z x $ZIP_NAME ; ls ; rm -rf *zip
             
        - name: Extract
          run: |
-            mkdir -p a ; ls ; e2fsck -pyf *img
+            mkdir -p a ; ls ; e2fsck -pf *img
             sudo mount -o rw,sync *.img a
             
        - name: Update values
