@@ -3,7 +3,7 @@ name: Merge vndk28
 on: [push]
 
 env:
-  URL : https://nav.dl.sourceforge.net/project/gsitutorials-sgsi/SGSI/A12Beta/Pixel3-SP1A-A12-SGSI-GSI-Tutorials.7z
+  URL : https://managedway.dl.sourceforge.net/project/gsitutorials-sgsi/SGSI/A12Beta/Pixel3-SP1A-A12-SGSI-GSI-Tutorials.7z
   ZIP_NAME : test.7z
   TZ: Asia/Kolkata
 jobs:
@@ -27,11 +27,10 @@ jobs:
        - name: Extract
          run: |
             mkdir -p a ; ls ; e2fsck -pf *img
-            sudo mount -o rw,sync *.img a
+            sudo mount -o rw,sync *.img a ; df -h
             
        - name: Add vndk28
          run: |
-            ls a/ ; ls a/system/apex
             sudo cp -fr *.apex a/system/apex/
             ls a/system/apex
             ln -s  /apex/com.android.vndk.v28/lib a/system/system/lib/vndk-28
