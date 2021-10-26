@@ -41,7 +41,7 @@ jobs:
 
        - name: Repack
          run: |
-            e2fsck -pf *img ; gzip *img ; mkdir final ; mv *gz final/Pixel-3-SGSImod.img.gz
+            e2fsck -yf *img ; gzip *img ; mkdir final ; mv *gz final/Pixel-3-SGSImod.img.gz
 
        - name: Upload
          run: |
