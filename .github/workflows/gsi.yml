@@ -17,7 +17,7 @@ jobs:
        - name: Initializing environment
          run: |
             docker rmi `docker images -q`
-            sudo apt install expect simg2img p7zip aria2 coreutils -y
+            sudo apt install expect simg2img p7zip aria2 coreutils qemu-utils -y
        
        - name: Download
          run: |
