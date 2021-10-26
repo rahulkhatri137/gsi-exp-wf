@@ -16,8 +16,7 @@ jobs:
            
        - name: Initializing environment
          run: |
-            docker rmi `docker images -q`
-            sudo apt install expect simg2img p7zip aria2 coreutils qemu-utils -y
+            sudo apt install expect simg2img p7zip aria2 -y
        
        - name: Download & Extract
          run: |
@@ -33,7 +32,7 @@ jobs:
          run: |
             sudo cp -fr *.apex a/system/apex/
             ls a/system/apex ; ls a/system
-            rm -rf $systempath/lib/vndk-28 $systempath/lib/vndk-sp-28 ; rm -rf $systempath/lib64/vndk-28 $systempath/lib64/vndk-sp-28
+            rm -rf a/system/lib/vndk-28 a/system/lib/vndk-sp-28 a/system/lib64/vndk-28 a/system/lib64/vndk-sp-28
             ln -s  /apex/com.android.vndk.v28/lib a/system/lib/vndk-28
             ln -s  /apex/com.android.vndk.v28/lib64 a/system/lib64/vndk-28
             ln -s  /apex/com.android.vndk.v28/lib a/system/lib/vndk-sp-28
