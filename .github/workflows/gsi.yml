@@ -26,7 +26,7 @@ jobs:
             
        - name: Extract
          run: |
-            mkdir -p a ; ls ; e2fsck -pf *img ; sudo qemu-img resize -f raw system.img 3G
+            mkdir -p a ; ls ; e2fsck -pf *img ; sudo resize2fs system.img 2800M
             sudo mount -o rw,sync *.img a ; sudo dd if=/dev/loop0 bs=1M count=40 status=none > /dev/null 2>&1 ;  df -h
             
        - name: Add vndk28
