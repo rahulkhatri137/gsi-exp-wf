@@ -32,7 +32,7 @@ jobs:
          run: |
             sudo cp -fr *.apex a/system/apex/
             ls a/system/apex ; ls a/system
-            rm -rf a/system/lib/vndk-28 a/system/lib/vndk-sp-28 a/system/lib64/vndk-28 a/system/lib64/vndk-sp-28
+            sudo rm -rf a/system/lib/vndk-28 a/system/lib/vndk-sp-28 a/system/lib64/vndk-28 a/system/lib64/vndk-sp-28
             ln -s  /apex/com.android.vndk.v28/lib a/system/lib/vndk-28
             ln -s  /apex/com.android.vndk.v28/lib64 a/system/lib64/vndk-28
             ln -s  /apex/com.android.vndk.v28/lib a/system/lib/vndk-sp-28
