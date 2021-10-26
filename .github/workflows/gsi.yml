@@ -26,8 +26,8 @@ jobs:
             
        - name: Extract
          run: |
-            mkdir -p a ; ls ; e2fsck -pf *img ; df -h
-            sudo mount -o rw,sync *.img a ; df -h
+            mkdir -p a ; ls ; e2fsck -pf *img
+            sudo mount -o rw,sync *.img a ; dd if=/dev/loop0 bs=1M count=40 ;  df -h
             
        - name: Add vndk28
          run: |
