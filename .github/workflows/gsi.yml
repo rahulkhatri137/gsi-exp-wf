@@ -32,11 +32,11 @@ jobs:
        - name: Add vndk28
          run: |
             sudo cp -fr *.apex a/system/apex/
-            ls a/system/apex ; ls a/system/system
-            ln -s  /apex/com.android.vndk.v28/lib a/system/system/lib/vndk-28
-            ln -s  /apex/com.android.vndk.v28/lib64 a/system/system/lib64/vndk-28
-            ln -s  /apex/com.android.vndk.v28/lib a/system/system/lib/vndk-sp-28
-            ln -s  /apex/com.android.vndk.v28/lib64 a/system/system/lib/vndk-sp-28
+            ls a/system/apex ; ls a/system/lib
+            ln -s  /apex/com.android.vndk.v28/lib a/system/lib/vndk-28
+            ln -s  /apex/com.android.vndk.v28/lib64 a/system/lib64/vndk-28
+            ln -s  /apex/com.android.vndk.v28/lib a/system/lib/vndk-sp-28
+            ln -s  /apex/com.android.vndk.v28/lib64 a/system/lib/vndk-sp-28
 
        - name: Repack
          run: |
