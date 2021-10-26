@@ -22,12 +22,12 @@ jobs:
        - name: Download
          run: |
             aria2c -x16 -j$(nproc) -U "Mozilla/5.0" -o $ZIP_NAME $URL
-            7z x $ZIP_NAME ; ls ; rm -rf *zip *7z
+            7z x $ZIP_NAME ; rm -rf *zip *7z ; ls
             
        - name: Extract
          run: |
             mkdir -p a ; ls ; e2fsck -pf *img
-            sudo mount -o rw,sync *.img a ; dd if=/dev/loop0 bs=1M count=40 ;  df -h
+            sudo mount -o rw,sync *.img a ; sudo dd if=/dev/loop0 bs=1M count=40 ;  df -h
             
        - name: Add vndk28
          run: |
@@ -40,7 +40,7 @@ jobs:
 
        - name: Repack
          run: |
-            e2fsck -pyf *img ; gzip *img ; mkdir final ; mv *gz final/
+            e2fsck -pf *img ; gzip *img ; mkdir final ; mv *gz final/Pixel-3-SGSImod.img.gz
 
        - name: Upload
          run: |
