@@ -3,8 +3,8 @@ name: Merge vndk28
 on: [push]
 
 env:
-  URL : https://udomain.dl.sourceforge.net/project/nippongsi/AOSP%20-%20CipherOS-2.0%20-%20HXXMTHQZNW/CipherOS-2.0-AB-12-20211007-nippongsi.img.gz
-  ZIP_NAME : test.gz
+  URL : https://nav.dl.sourceforge.net/project/gsitutorials-sgsi/SGSI/A12Beta/Pixel3-SP1A-A12-SGSI-GSI-Tutorials.7z
+  ZIP_NAME : test.7z
   TZ: Asia/Kolkata
 jobs:
   Merge:
@@ -16,27 +16,27 @@ jobs:
            
        - name: Initializing environment
          run: |
-            sudo apt install expect simg2img aria2 -y
+            sudo apt install expect simg2img p7zip aria2 -y
        
        - name: Download
          run: |
             aria2c -x16 -j$(nproc) -U "Mozilla/5.0" -o $ZIP_NAME $URL
-            gzip -d $ZIP_NAME
+            7z x $ZIP_NAME ; ls
             
        - name: Extract
          run: |
-            mkdir -p a ; ls ; e2fsck -f *img
+            mkdir -p a ; ls ; e2fsck -pyf *img
             sudo mount -o rw,sync *.img a
             
        - name: Update values
          run: |
-            ls a/ ; ls a/system
-            mv *.apex a/system/apex/
-            ls a/system/apex
+            ls a/ ; ls a/system/system/apex
+            mv *.apex a/system/system/apex/
+            ls a/system/system/apex
 
        - name: Repack
          run: |
-            e2fsck -f *img ; gzip *img ; mkdir final ; mv *gz final/
+            e2fsck -pyf *img ; gzip *img ; mkdir final ; mv *gz final/
 
        - name: Upload
          run: |
