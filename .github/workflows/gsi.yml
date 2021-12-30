@@ -1,10 +1,10 @@
-name: Merge vndk28
+name: Fix prop
 
 on: [push]
 
 env:
-  URL : https://managedway.dl.sourceforge.net/project/gsitutorials-sgsi/SGSI/A12Beta/Pixel3-SP1A-A12-SGSI-GSI-Tutorials.7z
-  ZIP_NAME : test.7z
+  URL : "https://rehans.harshtutorialdrive.workers.dev/0://lineage-19.0-20211216-UNOFFICIAL-treble_arm64_bvS-vndklite.img.xz"
+  ZIP_NAME : "LineageOS-19-20211216-treble_arm64-bvS-vndklite"
   TZ: Asia/Kolkata
 jobs:
   Merge:
@@ -20,28 +20,25 @@ jobs:
        
        - name: Download & Extract
          run: |
-            aria2c -x16 -j$(nproc) -U "Mozilla/5.0" -o $ZIP_NAME $URL
-            7z x $ZIP_NAME ; rm -rf *zip *7z ; ls
+            aria2c -x16 -j$(nproc) -U "Mozilla/5.0" $URL
+            xz -d *xz ; rm -rf *zip *7z *xz ; ls
             
        - name: Mount
          run: |
-            mkdir -p a ; ls ; e2fsck -pf *img ; sudo resize2fs system.img 2800M
-            sudo mount -o rw,sync *.img a ; df -h
+            mkdir -p a ; ls ; e2fsck -pf *img
+            sudo mount -o loop,rw,sync *.img a
             
-       - name: Link vndk28
+       - name: Fix prop
          run: |
-            sudo cp -fr *.apex a/system/apex/
-            ls a/system/apex
-            sudo rm -rf a/system/lib/vndk-28 a/system/lib/vndk-sp-28
-            sudo rm -rf a/system/lib64/vndk-28 a/system/lib64/vndk-sp-28
-            sudo ln -s  /apex/com.android.vndk.v28/lib a/system/lib/vndk-28
-            sudo ln -s  /apex/com.android.vndk.v28/lib64 a/system/lib64/vndk-28
-            sudo ln -s  /apex/com.android.vndk.v28/lib a/system/lib/vndk-sp-28
-            sudo ln -s  /apex/com.android.vndk.v28/lib64 a/system/lib64/vndk-sp-28
+            ls a/system
+            echo "" >> a/system/build.prop
+            echo "# Don't write binary XML files" >> a/system/build.prop
+            echo "persist.sys.binary_xml=false" >> a/system/build.prop
+            echo "" >> a/system/build.prop
 
        - name: Repack
          run: |
-            e2fsck -yf *img ; umount a ; gzip *img ; mkdir final ; mv *gz final/Pixel-3-SGSImod.img.gz
+            e2fsck -yf *img ; umount a ; gzip -fqt9 *img > $Zip_NAME.img.gz ; mkdir final ; mv *gz final
 
        - name: Upload
          run: |
