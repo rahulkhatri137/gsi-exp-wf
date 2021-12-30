@@ -31,15 +31,15 @@ jobs:
        - name: Fix prop
          run: |
             ls a/system
-            echo "" >> a/system/build.prop
-            echo "# Don't write binary XML files" >> a/system/build.prop
-            echo "persist.sys.binary_xml=false" >> a/system/build.prop
-            echo "" >> a/system/build.prop
-            cat a/system/build.prop
+            sudo echo "" >> a/system/build.prop
+            sudo echo "# Don't write binary XML files" >> a/system/build.prop
+            sudo echo "persist.sys.binary_xml=false" >> a/system/build.prop
+            sudo echo "" >> a/system/build.prop
+            sudo cat a/system/build.prop
 
        - name: Repack
          run: |
-            e2fsck -yf *img ; umount a ; gzip -fqt9 *img > $Zip_NAME.img.gz ; mkdir final ; mv *gz final
+            e2fsck -yf *img ; sudo umount a ; chmod -R 777 *img ; gzip -fqt9 *img > $Zip_NAME.img.gz ; mkdir final ; mv *gz final
 
        - name: Upload
          run: |
