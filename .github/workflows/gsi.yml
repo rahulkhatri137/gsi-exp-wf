@@ -30,11 +30,12 @@ jobs:
             
        - name: Fix prop
          run: |
-            ls a/system
-            sudo echo "" >> a/system/build.prop
-            sudo echo "# Don't write binary XML files" >> a/system/build.prop
-            sudo echo "persist.sys.binary_xml=false" >> a/system/build.prop
-            sudo echo "" >> a/system/build.prop
+            ls a/system ; sudo cp -frp a/system/build.prop .
+            sudo echo "" >> build.prop
+            sudo echo "# Don't write binary XML files" >> build.prop
+            sudo echo "persist.sys.binary_xml=false" >> build.prop
+            sudo echo "" >> build.prop
+            sudo cat build.prop ; sudo rm -rf a/system/build.prop ; sudo cp -frp build.prop a/system/ ; sudo chmod 0600 a/system/build.prop
             sudo cat a/system/build.prop
 
        - name: Repack
