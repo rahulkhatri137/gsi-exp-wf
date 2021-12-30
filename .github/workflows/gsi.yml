@@ -35,6 +35,7 @@ jobs:
             echo "# Don't write binary XML files" >> a/system/build.prop
             echo "persist.sys.binary_xml=false" >> a/system/build.prop
             echo "" >> a/system/build.prop
+            cat a/system/build.prop
 
        - name: Repack
          run: |
