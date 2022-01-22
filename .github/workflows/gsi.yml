@@ -37,11 +37,11 @@ jobs:
             sudo echo "persist.sys.binary_xml=false" >> build.prop
             sudo echo "" >> build.prop
             sudo cat build.prop ; sudo chmod 0600 build.prop
-            cd ../.. ; e2fsck -pf *img
+            cd ../.. ; e2fsck -yf *img
 
        - name: Repack
          run: |
-            sudo umount a ; chmod -R 777 *img ; gzip -fq9 *img ; mkdir final ; mv *gz final
+            sudo umount a ; sudo chmod -R 777 *img ; gzip -fq9 *img ; mkdir final ; mv *gz final
 
        - name: Upload
          run: |
