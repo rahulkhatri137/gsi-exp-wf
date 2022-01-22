@@ -3,7 +3,7 @@ name: Fix prop
 on: [push]
 
 env:
-  URL : "https://rehans.harshtutorialdrive.workers.dev/0://lineage-19.0-20211216-UNOFFICIAL-treble_arm64_bvS-vndklite.img.xz"
+  URL : "https://rehans.harshtutorialdrive.workers.dev/0://SuperiorOS-12-arm64_ab-bvN-Unofficial.img.xz"
   ZIP_NAME : "LineageOS-19-20211216-treble_arm64-bvS-vndklite"
   TZ: Asia/Kolkata
 jobs:
@@ -25,22 +25,21 @@ jobs:
             
        - name: Mount
          run: |
-            mkdir -p a ; ls ; e2fsck -pf *img
+            mkdir -p a ; ls ; e2fsck -pyf *img
             sudo mount -o loop,rw,sync *.img a
             
        - name: Fix prop
          run: |
-            ls a/system ; sudo cp -frp a/system/build.prop .
+            cd a/system ; sudo chmod -R 777 build.prop
             sudo echo "" >> build.prop
             sudo echo "# Don't write binary XML files" >> build.prop
             sudo echo "persist.sys.binary_xml=false" >> build.prop
             sudo echo "" >> build.prop
-            sudo cat build.prop ; sudo rm -rf a/system/build.prop ; sudo cp -frp build.prop a/system/ ; sudo chmod 0600 a/system/build.prop
-            sudo cat a/system/build.prop
+            sudo cat build.prop ; sudo chmod 0600 build.prop
 
        - name: Repack
          run: |
-            e2fsck -yf *img ; sudo umount a ; chmod -R 777 *img ; gzip -fqt9 *img > $Zip_NAME.img.gz ; mkdir final ; mv *gz final
+            e2fsck -pyf *img ; sudo umount a ; chmod -R 777 *img ; gzip -fq9 *img ; mkdir final ; mv *gz final
 
        - name: Upload
          run: |
