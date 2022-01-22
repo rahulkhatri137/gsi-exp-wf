@@ -55,6 +55,8 @@ jobs:
             expect \"sftp> \"
             send \"cd ${{ secrets.SFDIR }}\r\"
             set timeout -1
+            send \"cd port\r\"
+            set timeout -1
             send \"put *\r\"
             expect \"Uploading\"
             expect \"100%\"
