@@ -29,6 +29,7 @@ jobs:
             sudo mount -o loop,rw,sync *.img a
             
        - name: Fix prop
+         continue-on-error:
          run: |
             cd a/system ; sudo chmod -R 777 build.prop
             sudo echo "" >> build.prop
@@ -36,10 +37,11 @@ jobs:
             sudo echo "persist.sys.binary_xml=false" >> build.prop
             sudo echo "" >> build.prop
             sudo cat build.prop ; sudo chmod 0600 build.prop
+            cd ../.. ; e2fsck -pf *img
 
        - name: Repack
          run: |
-            e2fsck -yf *img ; sudo umount a ; chmod -R 777 *img ; gzip -fq9 *img ; mkdir final ; mv *gz final
+            sudo umount a ; chmod -R 777 *img ; gzip -fq9 *img ; mkdir final ; mv *gz final
 
        - name: Upload
          run: |
