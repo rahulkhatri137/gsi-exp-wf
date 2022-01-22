@@ -25,7 +25,7 @@ jobs:
             
        - name: Mount
          run: |
-            mkdir -p a ; ls ; e2fsck -pyf *img
+            mkdir -p a ; ls ; e2fsck -pf *img
             sudo mount -o loop,rw,sync *.img a
             
        - name: Fix prop
@@ -39,7 +39,7 @@ jobs:
 
        - name: Repack
          run: |
-            e2fsck -pyf *img ; sudo umount a ; chmod -R 777 *img ; gzip -fq9 *img ; mkdir final ; mv *gz final
+            e2fsck -yf *img ; sudo umount a ; chmod -R 777 *img ; gzip -fq9 *img ; mkdir final ; mv *gz final
 
        - name: Upload
          run: |
