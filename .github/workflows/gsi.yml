@@ -3,8 +3,8 @@ name: Fix prop
 on: [push]
 
 env:
-  URL : "https://rehans.harshtutorialdrive.workers.dev/0://SuperiorOS-12-arm64_ab-bvN-Unofficial.img.xz"
-  ZIP_NAME : "LineageOS-19-20211216-treble_arm64-bvS-vndklite"
+  URL : "https://rehans.harshtutorialdrive.workers.dev/0://CherishOS-3.3.5-arm64_bgN-vndklite-Unofficial.img.xz"
+  ZIP_NAME : ""
   TZ: Asia/Kolkata
 jobs:
   Merge:
