@@ -19,13 +19,14 @@ jobs:
             sudo apt install expect simg2img p7zip aria2 -y
        
        - name: Download & Extract
+         continue-on-error: true
          run: |
             aria2c -x16 -j$(nproc) -U "Mozilla/5.0" $URL
             xz -d *xz ; rm -rf *zip *7z *xz ; ls
+            mkdir -p a ; ls ; e2fsck -pf *img
             
        - name: Mount
          run: |
-            mkdir -p a ; ls ; e2fsck -pf *img
             sudo mount -o loop,rw,sync *.img a
             
        - name: Fix prop
