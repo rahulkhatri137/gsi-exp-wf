@@ -3,7 +3,7 @@ name: Fix prop
 on: [push]
 
 env:
-  URL : "https://rehans.harshtutorialdrive.workers.dev/0://CherishOS-3.3.5-arm64_bgN-vndklite-Unofficial.img.xz"
+  URL : "https://dipeshmirror.dipeshtech.workers.dev/0:/statix_arm64-20220201-0514-12-v5.0-SNOWCONE-dsu.zip"
   ZIP_NAME : ""
   TZ: Asia/Kolkata
 jobs:
@@ -22,7 +22,7 @@ jobs:
          continue-on-error: true
          run: |
             aria2c -x16 -j$(nproc) -U "Mozilla/5.0" $URL
-            xz -d *xz ; rm -rf *zip *7z *xz ; ls
+            unzip *zip ; rm -rf *zip *7z *xz ; ls
             mkdir -p a ; ls ; e2fsck -pf *img
             
        - name: Mount
