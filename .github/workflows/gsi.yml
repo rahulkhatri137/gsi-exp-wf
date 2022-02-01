@@ -22,7 +22,7 @@ jobs:
          continue-on-error: true
          run: |
             aria2c -x16 -j$(nproc) -U "Mozilla/5.0" $URL
-            unzip *zip ; rm -rf *zip *7z *xz ; ls
+            unzip *zip ; rm -rf *zip *7z *xz vbmeta.img ; ls
             mkdir -p a ; ls ; e2fsck -pf *img
             
        - name: Mount
