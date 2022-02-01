@@ -3,8 +3,8 @@ name: Pack oss vendor
 on: [push]
 
 env:
-  NAME: Dot-oss-20211011
-  URL: https://sourceforge.net/projects/realme-1/files/DotOS/OSS/dotOS-R-v5.2-CPH1859-UNOFFICIAL-20211010-0713.zip/download
+  NAME: Fusion-vndk31-20220201
+  URL: https://rehans.harshtutorialdrive.workers.dev/0://FusionOS-3.0-Aqua-CPH1859-01310903-UNOFFICIAL.zip
   TZ: Asia/Kolkata
 jobs:
   Work:
