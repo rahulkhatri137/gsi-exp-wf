@@ -3,7 +3,7 @@ name: Fix prop
 on: [push]
 
 env:
-  URL : "https://phoenixnap.dl.sourceforge.net/project/andyyan-gsi/lineage-19.x/lineage-19.0-20220211-UNOFFICIAL-treble_arm64_bgS-vndklite.img.xz"
+  URL : "https://nav.dl.sourceforge.net/project/andyyan-gsi/lineage-19.x/lineage-19.0-20220211-UNOFFICIAL-treble_arm64_bvS-vndklite.img.xz"
   ZIP_NAME : ""
   TZ: Asia/Kolkata
 jobs:
