@@ -3,7 +3,7 @@ name: Fix prop
 on: [push]
 
 env:
-  URL : "https://nchc.dl.sourceforge.net/project/gsi-projects/v400.h/SuperiorOS-12/SuperiorOS-12-arm64_ab-bvN-Unofficial.img.xz"
+  URL : "https://dipeshmirror.dipeshtech.workers.dev/0:/system-squeak-arm64-ab-vndklite-gapps.img.xz"
   ZIP_NAME : ""
   TZ: Asia/Kolkata
 jobs:
