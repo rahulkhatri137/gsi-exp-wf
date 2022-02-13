@@ -3,7 +3,7 @@ name: Fix prop
 on: [push]
 
 env:
-  URL : "https://dipeshmirror.dipeshtech.workers.dev/0:/PixelExperience_arm64-ab-vndklite-12.0-20220208-UNOFFICIAL.img.xz"
+  URL : "https://dipeshmirror.dipeshtech.workers.dev/0:/system-squeak-arm64-ab-vndklite-vanilla-secure.img.xz"
   ZIP_NAME : ""
   TZ: Asia/Kolkata
 jobs:
