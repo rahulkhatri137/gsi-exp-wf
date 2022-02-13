@@ -3,7 +3,7 @@ name: Fix prop
 on: [push]
 
 env:
-  URL : "https://nchc.dl.sourceforge.net/project/yilliee-projects/GSIs/Octavi/v3.2/OctaviOS-v3.2-arm64_bgN-vndklite-01012022-Unofficial.img.xz"
+  URL : "https://nchc.dl.sourceforge.net/project/yilliee-projects/GSIs/Octavi/v3.2/OctaviOS-v3.2-arm64_bvN-vndklite-01012022-Unofficial.img.xz"
   ZIP_NAME : ""
   TZ: Asia/Kolkata
 jobs:
