@@ -3,7 +3,7 @@ name: Fix prop
 on: [push]
 
 env:
-  URL : "https://xiaomemeindex.com/treble/Arcana/ProjectArcana_v402-arm64-bvS_20220215.img"
+  URL : "https://broken-sunset-4971.rehanalt501.workers.dev/0://MikuUI-SNOW-arm64-ab-vndklite-20220213-UNOFFICIAL.img.xz"
   ZIP_NAME : ""
   TZ: Asia/Kolkata
 jobs:
@@ -22,7 +22,7 @@ jobs:
          continue-on-error: true
          run: |
             aria2c -x16 -j$(nproc) -U "Mozilla/5.0" $URL
-            #xz -d *xz ; rm -rf *zip *7z *xz ; ls
+            xz -d *xz ; rm -rf *zip *7z *xz ; ls
             mkdir -p a ; ls ; e2fsck -pf *img
             
        - name: Mount
