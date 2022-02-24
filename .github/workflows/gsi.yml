@@ -3,7 +3,7 @@ name: Fix prop
 on: [push]
 
 env:
-  URL : "https://broken-sunset-4971.rehanalt501.workers.dev/0://MikuUI-SNOW-arm64-ab-vndklite-20220213-UNOFFICIAL.img.xz"
+  URL : "https://cfhcable.dl.sourceforge.net/project/gsi-projects/v402/ArrowOS-12/ArrowOS-12-arm64_ab-bgN-vndklite-Unofficial.img.xz"
   ZIP_NAME : ""
   TZ: Asia/Kolkata
 jobs:
