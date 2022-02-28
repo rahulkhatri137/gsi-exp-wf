@@ -3,8 +3,8 @@ name: Pack oss vendor
 on: [push]
 
 env:
-  NAME: Fusion-vndk31-20220201
-  URL: https://rehans.harshtutorialdrive.workers.dev/0://FusionOS-3.0-Aqua-CPH1859-01310903-UNOFFICIAL.zip
+  NAME: Cipher-vndk31-20220221
+  URL: https://cloud.minati.workers.dev/CipherOS-2.5-LYNX-cipher_CPH1859-20220221-1637-UNOFFICIAL-VANILLA.zip
   TZ: Asia/Kolkata
 jobs:
   Work:
