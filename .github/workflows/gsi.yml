@@ -3,9 +3,7 @@ name: Building GSI..
 on: [push]
 
 env:
-  ROM_URL: https://cloud.minati.workers.dev/dotOS-R-v5.1-RMX1941-UNOFFICIAL-20210529-2316.zip 
-  ROM_NAME: Generic:Dot-old
-  ZIP_NAME: Dot-old-RK137GSI.zip
+  ZIP_NAME: overlays.zip
   TZ: Asia/Kolkata
 jobs:
   build:
@@ -18,28 +16,19 @@ jobs:
        - name: Initializing environment
          run: |
             sudo -E apt-get -qq update
-            sudo -E apt-get -qq install git openjdk-8-jdk wget expect
+            sudo -E apt-get -qq install git expect
 
        
        - name: Clone ErfanGSIs
-         run: git clone --recurse-submodules https://github.com/Rahul-o/ErfanGSIs -b old
-       
-       - name: Setting up ErfanGSI requirements
-         run: |
-              sudo chmod -R 777 ErfanGSIs
-              cd ErfanGSIs
-              git clone https://github.com/rahulkhatri137/treble_experimentations treble
-              sudo bash setup.sh
-       
-       - name: Download Rom & Generate GSI
-         run: sudo ./ErfanGSIs/url2GSI.sh $ROM_URL $ROM_NAME
+         run: git clone --recurse-submodules https://github.com/rahulkhatri137/vendor_hardware_overlay vo
        
        - name: Zip AB and upload 
          run: |
-              mkdir final
+              mkdir output
+              sudo chmod -R 777 vo ; cd vo/build ; bash build.sh ; ls ; cd .. ; ls
               sudo chmod -R 777 ErfanGSIs/output
-              cd ErfanGSIs/output
-              zip -r $ZIP_NAME *-AB-*.img
+              cd output
+              zip -r $ZIP_NAME *
               expect -c " 
               spawn sftp ${{ secrets.SFUSER }}@frs.sourceforge.net
               expect \"yes/no\"
