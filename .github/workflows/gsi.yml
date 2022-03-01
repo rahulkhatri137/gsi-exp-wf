@@ -25,8 +25,8 @@ jobs:
        - name: Zip AB and upload 
          run: |
               mkdir output
-              sudo chmod -R 777 vo ; cd vo/build ; bash build.sh ; ls ; cd .. ; ls
-              sudo chmod -R 777 ErfanGSIs/output
+              sudo chmod -R 777 vo ; cd vo/build ; bash build.sh ; mv treble* ./../output ; cd ..
+              sudo chmod -R 777 output
               cd output
               zip -r $ZIP_NAME *
               expect -c " 
