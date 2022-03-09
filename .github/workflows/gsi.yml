@@ -3,7 +3,7 @@ name: Building GSI..
 on: [push]
 
 env:
-  ZIP_NAME: overlays.zip
+  ZIP_NAME: Overlays-20220309.zip
   TZ: Asia/Kolkata
 jobs:
   build:
@@ -25,9 +25,10 @@ jobs:
        - name: Zip AB and upload 
          run: |
               mkdir output
-              sudo chmod -R 777 vo ; cd vo/build ; bash build.sh ; mv treble* ./../../output ; cd ../..
+              sudo chmod -R 777 vo ; cd vo/build ; bash build.sh ; bash ./../tests/tests.sh ; bash org.sh
+              cp -frp a/* ./../../output ; cd ../..
               sudo chmod -R 777 output
-              cd output
+              cd output ; ls
               zip -r $ZIP_NAME *
               expect -c " 
               spawn sftp ${{ secrets.SFUSER }}@frs.sourceforge.net
