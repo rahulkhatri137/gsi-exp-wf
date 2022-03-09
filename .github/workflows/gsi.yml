@@ -16,17 +16,20 @@ jobs:
        - name: Initializing environment
          run: |
             sudo -E apt-get -qq update
-            sudo -E apt-get -qq install git expect
+            sudo -E apt-get -qq install git expect xmlstarlet dos2unix
 
        
-       - name: Clone ErfanGSIs
+       - name: Clone repo
          run: git clone --recurse-submodules https://github.com/rahulkhatri137/vendor_hardware_overlay vo
        
-       - name: Zip AB and upload 
+       - name: Zip overlays
          run: |
               mkdir output
               sudo chmod -R 777 vo ; cd vo/build ; bash build.sh ; bash ./../tests/tests.sh ; bash org.sh
-              cp -frp a/* ./../../output ; cd ../..
+              cp -frp a/* ./../../output
+
+       - name: Upload 
+         run: |
               sudo chmod -R 777 output
               cd output ; ls
               zip -r $ZIP_NAME *
