@@ -3,7 +3,7 @@ name: Fix prop
 on: [push]
 
 env:
-  URL : "https://master.dl.sourceforge.net/project/tipzbuilds/GSIs/CorvusROM/Alpha/20220315/Corvus_vS1.0-Revolt-treble_arm64_ab_vndklite-Alpha-0000.img.xz?viasf=1"
+  URL : "https://liquidtelecom.dl.sourceforge.net/project/gsi-projects/v402/CherishOS-3.4/CherishOS-3.4-arm64-ab_bgN-vndklite-Unofficial.img.xz"
   ZIP_NAME : ""
   TZ: Asia/Kolkata
 jobs:
