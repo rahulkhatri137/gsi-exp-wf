@@ -3,7 +3,7 @@ name: Fix prop
 on: [push]
 
 env:
-  URL : "https://liquidtelecom.dl.sourceforge.net/project/gsi-projects/v402/CherishOS-3.4/CherishOS-3.4-arm64-ab_bgN-vndklite-Unofficial.img.xz"
+  URL : "https://xiaomemeindex.com/treble/Arcana/20220317/ProjectArcana_v410-arm64-bgS-lite_20220317.img.xz"
   ZIP_NAME : ""
   TZ: Asia/Kolkata
 jobs:
