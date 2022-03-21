@@ -3,7 +3,7 @@ name: Fix prop
 on: [push]
 
 env:
-  URL : "https://xiaomemeindex.com/treble/Arcana/20220317/ProjectArcana_v410-arm64-bgS-lite_20220317.img.xz"
+  URL : "https://nav.dl.sourceforge.net/project/gsi-projects/v402/crDroid-8.2/crDroid-8.2-arm64_bgN-vndklite-Unofficial.img.xz"
   ZIP_NAME : ""
   TZ: Asia/Kolkata
 jobs:
