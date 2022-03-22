@@ -3,7 +3,7 @@ name: Fix prop
 on: [push]
 
 env:
-  URL : "https://github.com/ponces/treble_build_pe/releases/download/v411/PixelExperience_arm64-ab-vndklite-12.1-20220321-UNOFFICIAL.img.xz"
+  URL : "https://github.com/phhusson/treble_experimentations/releases/download/v411/system-squeak-arm64-ab-vndklite-vanilla.img.xz"
   ZIP_NAME : ""
   TZ: Asia/Kolkata
 jobs:
@@ -56,7 +56,7 @@ jobs:
             expect \"sftp> \"
             send \"cd ${{ secrets.SFDIR }}\r\"
             set timeout -1
-            send \"cd port\r\"
+            send \"cd PGSI\r\"
             set timeout -1
             send \"put *\r\"
             expect \"Uploading\"
