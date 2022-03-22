@@ -3,7 +3,7 @@ name: Fix prop
 on: [push]
 
 env:
-  URL : "https://github.com/phhusson/treble_experimentations/releases/download/v411/system-squeak-arm64-ab-vndklite-vanilla.img.xz"
+  URL : "https://github.com/phhusson/treble_experimentations/releases/download/v411/system-squeak-arm64-ab-vndklite-gapps.img.xz"
   ZIP_NAME : ""
   TZ: Asia/Kolkata
 jobs:
