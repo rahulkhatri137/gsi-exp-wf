@@ -3,7 +3,6 @@ name: Building GSI..
 on: [push]
 
 env:
-  ZIP_NAME: Overlays-20220309.zip
   TZ: Asia/Kolkata
 jobs:
   build:
@@ -26,25 +25,18 @@ jobs:
          run: |
               mkdir output
               sudo chmod -R 777 vo ; cd vo/build ; bash build.sh ; bash ./../tests/tests.sh ; bash org.sh
-              cp -frp a/* ./../../output
-
-       - name: Upload 
-         run: |
+              cp -frp a/* ./../../output ; cd ../../
+              export date=`date +%Y%m%d`
               sudo chmod -R 777 output
               cd output ; ls
-              zip -r $ZIP_NAME *
-              expect -c " 
-              spawn sftp ${{ secrets.SFUSER }}@frs.sourceforge.net
-              expect \"yes/no\"
-              send \"yes\r\"
-              expect \"Password\"        
-              send \"${{ secrets.SFPASS }}\r\"
-              expect \"sftp> \"
-              send \"cd ${{ secrets.SFDIR }}\r\"
-              set timeout -1
-              send \"put $ZIP_NAME\r\"
-              expect \"Uploading\"
-              expect \"100%\"
-              expect \"sftp>\"
-              send \"bye\r\"
-              interact"
+              zip -r overlays-$date.zip *
+
+       - name: Upload 
+         uses: softprops/action-gh-release@v1
+         with:
+           files: output/overlays*.zip
+           name: Overlays
+           tag_name: release
+           #body: Use actions auto bulid
+         env:
+            GH_TOKEN: ${{ secrets.GH_TOKEN }}
