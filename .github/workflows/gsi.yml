@@ -1,6 +1,6 @@
 name: Building GSI..
 
-on: [push]
+on: [workflow_dispatch]
 
 env:
   ROM_URL: https://cloud.minati.workers.dev/dotOS-R-v5.1-RMX1941-UNOFFICIAL-20210529-2316.zip 
