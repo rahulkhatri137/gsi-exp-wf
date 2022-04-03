@@ -3,7 +3,7 @@ name: Fix prop
 on: [push]
 
 env:
-  URL : "https://udomain.dl.sourceforge.net/project/gsi-projects/v402.1/BlissOS-15.3/BlissOS-15.3-arm64_bgN-vndklite-Unofficial.img.xz"
+  URL : "https://udomain.dl.sourceforge.net/project/gsi-projects/v402.1/BlissOS-15.3/BlissOS-15.3-arm64_bvN-vndklite-Unofficial.img.xz"
   ZIP_NAME : ""
   TZ: Asia/Kolkata
 jobs:
