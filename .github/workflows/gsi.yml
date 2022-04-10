@@ -3,7 +3,7 @@ name: Fix prop
 on: [push]
 
 env:
-  URL : "https://master.dl.sourceforge.net/project/gsi-projects/v411/crDroid-8.3/crDroid-8.3-arm64_bvN-vndklite-Unofficial.img.xz?viasf=1"
+  URL : "https://nchc.dl.sourceforge.net/project/gsi-projects/v412/ArrowOS-12.1/ArrowOS-12.1-arm64_bgN-vndklite-Unofficial.img.xz"
   ZIP_NAME : ""
   TZ: Asia/Kolkata
 jobs:
