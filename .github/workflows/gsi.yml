@@ -3,7 +3,7 @@ name: Fix prop
 on: [push]
 
 env:
-  URL : "https://github.com/ponces/treble_build_pe/releases/download/v412-plus/PixelExperience_Plus_arm64-ab-vndklite-12.1-20220412-UNOFFICIAL.img.xz"
+  URL : "https://reflection.dipeshmirror.workers.dev/0:/Descendant_treble_arm64_bvS_vndklite_12_1_20220410_1926_RELEASE.zip"
   ZIP_NAME : ""
   TZ: Asia/Kolkata
 jobs:
