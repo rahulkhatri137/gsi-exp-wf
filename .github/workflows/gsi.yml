@@ -3,7 +3,7 @@ name: Fix prop
 on: [push]
 
 env:
-  URL : "http://xiaomemeindex.com/treble/Superior/12L/20220410/SuperiorOS_v412-arm64-bgS-lite_20220410.img.xz"
+  URL : "https://github.com/ponces/treble_build_pe/releases/download/v412-plus/PixelExperience_Plus_arm64-ab-vndklite-12.1-20220412-UNOFFICIAL.img.xz"
   ZIP_NAME : ""
   TZ: Asia/Kolkata
 jobs:
