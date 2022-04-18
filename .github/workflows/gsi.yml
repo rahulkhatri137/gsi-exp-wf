@@ -3,7 +3,7 @@ name: Fix prop
 on: [push]
 
 env:
-  URL : "https://reflection.dipeshmirror.workers.dev/0:/Descendant_treble_arm64_bvS_vndklite_12_1_20220410_1926_RELEASE.zip"
+  URL : "https://udomain.dl.sourceforge.net/project/ancientrom/gsi/V6.2/AncientOS-S-Shield-v6.2-arm64_bvN-vndklite-Steel-20220417.img.xz"
   ZIP_NAME : ""
   TZ: Asia/Kolkata
 jobs:
