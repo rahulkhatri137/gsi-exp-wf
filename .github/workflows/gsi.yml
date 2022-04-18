@@ -3,7 +3,7 @@ name: Fix prop
 on: [push]
 
 env:
-  URL : "https://udomain.dl.sourceforge.net/project/ancientrom/gsi/V6.2/AncientOS-S-Shield-v6.2-arm64_bvN-vndklite-Steel-20220417.img.xz"
+  URL : "https://liquidtelecom.dl.sourceforge.net/project/ancientrom/gsi/V6.2/AncientOS-S-Shield-v6.2-arm64_bgN-vndklite-Steel-20220417.img.xz"
   ZIP_NAME : ""
   TZ: Asia/Kolkata
 jobs:
