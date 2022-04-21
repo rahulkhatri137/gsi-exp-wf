@@ -3,7 +3,7 @@ name: Fix prop
 on: [push]
 
 env:
-  URL : "https://liquidtelecom.dl.sourceforge.net/project/ancientrom/gsi/V6.2/AncientOS-S-Shield-v6.2-arm64_bgN-vndklite-Steel-20220417.img.xz"
+  URL : "https://sourceforge.net/projects/tipzbuilds/files/GSIs/CorvusROM/Beta/20220420/Corvus_vS2.1-Revolt-treble_arm64_ab_vndklite-Gapps-Beta-Official-0000.img.xz/download"
   ZIP_NAME : ""
   TZ: Asia/Kolkata
 jobs:
