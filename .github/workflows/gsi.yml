@@ -3,7 +3,7 @@ name: Fix prop
 on: [push]
 
 env:
-  URL : "https://sourceforge.net/projects/tipzbuilds/files/GSIs/CorvusROM/Beta/20220420/Corvus_vS2.1-Revolt-treble_arm64_ab_vndklite_secure-Beta-Official-0000.img.xz/download"
+  URL : "https://master.dl.sourceforge.net/project/tipzbuilds/GSIs/CorvusROM/Beta/20220420/Corvus_vS2.1-Revolt-treble_arm64_ab_vndklite_secure-Beta-Official-0000.img.xz?viasf=1"
   ZIP_NAME : ""
   TZ: Asia/Kolkata
 jobs:
