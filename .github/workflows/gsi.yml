@@ -3,8 +3,8 @@ name: Pack oss vendor
 on: [push]
 
 env:
-  NAME: Cipher-vndk31-20220221
-  URL: https://cloud.minati.workers.dev/CipherOS-2.5-LYNX-cipher_CPH1859-20220221-1637-UNOFFICIAL-VANILLA.zip
+  NAME: Corvus-vndk32-20220621
+  URL: https://downloads.corvusrom.com/cph1859/gapps/Corvus_vS3.1-Medusa-CPH1859-Gapps-Official-0444.zip
   TZ: Asia/Kolkata
 jobs:
   Work:
