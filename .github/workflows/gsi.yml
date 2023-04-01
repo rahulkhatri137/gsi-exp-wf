@@ -3,7 +3,7 @@ name: Debloat
 on: [push]
 
 env:
-  URL : "https://master.dl.sourceforge.net/project/sgsi137/Test/coso.img"
+  URL : https://master.dl.sourceforge.net/project/sgsi137/Test/coso.img?viasf=1
   TZ: Asia/Kolkata
 jobs:
   Merge:
