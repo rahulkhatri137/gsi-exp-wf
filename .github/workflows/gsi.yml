@@ -3,7 +3,7 @@ name: Debloat
 on: [push]
 
 env:
-  URL : https://master.dl.sourceforge.net/project/sgsi137/Test/cos_1.img?viasf=1
+  URL : https://master.dl.sourceforge.net/project/sgsi137/Test/Cos/cos_deb.img?viasf=1
   TZ: Asia/Kolkata
 jobs:
   Merge:
@@ -30,7 +30,7 @@ jobs:
        - name: Get tree
          continue-on-error: true
          run: |
-            tree a/system > cos_1_tree.txt
+            tree a/system > cos_deb_tree.txt
 
        - name: Upload
          run: |
