@@ -1,14 +1,13 @@
-name: Fix prop
+name: Debloat
 
 on: [push]
 
 env:
-  URL : "https://master.dl.sourceforge.net/project/tipzbuilds/GSIs/CorvusROM/Beta/20220420/Corvus_vS2.1-Revolt-treble_arm64_ab_vndklite-Gapps-Beta-Official-0000.img.xz?viasf=1"
-  ZIP_NAME : ""
+  URL : "https://master.dl.sourceforge.net/project/sgsi137/Test/coso.img"
   TZ: Asia/Kolkata
 jobs:
   Merge:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
 
     steps:
        - name: Checkout
@@ -16,13 +15,12 @@ jobs:
            
        - name: Initializing environment
          run: |
-            sudo apt install expect simg2img p7zip aria2 -y
+            sudo apt update; sudo apt install tree git expect simg2img p7zip aria2 -y
        
        - name: Download & Extract
          continue-on-error: true
          run: |
             aria2c -x16 -j$(nproc) -U "Mozilla/5.0" $URL
-            xz -d *xz ; rm -rf *zip *7z *xz ; ls
             mkdir -p a ; ls ; e2fsck -pf *img
             
        - name: Mount
@@ -32,21 +30,10 @@ jobs:
        - name: Fix prop
          continue-on-error: true
          run: |
-            cd a/system ; sudo chmod -R 777 build.prop
-            sudo echo "" >> build.prop
-            sudo echo "# Don't write binary XML files" >> build.prop
-            sudo echo "persist.sys.binary_xml=false" >> build.prop
-            sudo echo "" >> build.prop
-            sudo cat build.prop ; sudo chmod 0600 build.prop
-            cd ../.. ; e2fsck -yf *img
-
-       - name: Repack
-         run: |
-            sudo umount a ; sudo chmod -R 777 *img ; gzip -fq9 *img ; mkdir final ; mv *gz final
+            tree a/system > cos_tree.txt
 
        - name: Upload
          run: |
-            cd final ; ls 
             expect -c " 
             spawn sftp ${{ secrets.SFUSER }}@frs.sourceforge.net
             expect \"yes/no\"
@@ -54,11 +41,11 @@ jobs:
             expect \"Password\"        
             send \"${{ secrets.SFPASS }}\r\"
             expect \"sftp> \"
-            send \"cd ${{ secrets.SFDIR }}\r\"
+            send \"cd /home/pfs/project/sgsi137\r\"
             set timeout -1
-            send \"cd PGSI\r\"
+            send \"cd Test/Cos\r\"
             set timeout -1
-            send \"put *\r\"
+            send \"put *.txt\r\"
             expect \"Uploading\"
             expect \"100%\"
             expect \"sftp>\"
