@@ -21,13 +21,13 @@ jobs:
          continue-on-error: true
          run: |
             aria2c -x16 -j$(nproc) -U "Mozilla/5.0" $URL
-            mkdir -p a ; ls ; e2fsck -pf *img
+            simg2img coso.img cos.img; mkdir -p a ; ls ; e2fsck -pf *img
             
        - name: Mount
          run: |
-            sudo mount -o loop,rw,sync *.img a
+            sudo mount -o loop,rw,sync cos.img a
             
-       - name: Fix prop
+       - name: Get tree
          continue-on-error: true
          run: |
             tree a/system > cos_tree.txt
