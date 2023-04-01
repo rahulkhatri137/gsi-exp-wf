@@ -3,7 +3,7 @@ name: Debloat
 on: [push]
 
 env:
-  URL : https://master.dl.sourceforge.net/project/sgsi137/Test/coso.img?viasf=1
+  URL : https://master.dl.sourceforge.net/project/sgsi137/Test/cos_1.img?viasf=1
   TZ: Asia/Kolkata
 jobs:
   Merge:
@@ -21,7 +21,7 @@ jobs:
          continue-on-error: true
          run: |
             aria2c -x16 -j$(nproc) -U "Mozilla/5.0" $URL
-            simg2img coso.img cos.img; mkdir -p a ; ls ; e2fsck -pf *img
+            simg2img *.img cos.img; mkdir -p a ; ls ; e2fsck -pf *img
             
        - name: Mount
          run: |
@@ -30,7 +30,7 @@ jobs:
        - name: Get tree
          continue-on-error: true
          run: |
-            tree a/system > cos_tree.txt
+            tree a/system > cos_1_tree.txt
 
        - name: Upload
          run: |
@@ -43,7 +43,7 @@ jobs:
             expect \"sftp> \"
             send \"cd /home/pfs/project/sgsi137\r\"
             set timeout -1
-            send \"cd Test/Cos\r\"
+            send \"cd Test\r\"
             set timeout -1
             send \"put *.txt\r\"
             expect \"Uploading\"
